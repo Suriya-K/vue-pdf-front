@@ -13,6 +13,13 @@ export default {
         "page-rec-disease": "url('/src/assets/img/page_bg/recom_disease.jpg')",
       },
     },
+    fontFamily: {
+      montserrat_regular: ["Montserrat-Regular", "sans-serif"],
+      montserrat_light: ["Montserrat-Light", "sans-serif"],
+      montserrat_bold: ["Montserrat-Bold", "sans-serif"],
+      cloud_bold: ["Cloud-Bold", "sans-serif"],
+      cloud_light: ["Cloud-Light", "sans-serif"],
+    },
   },
-  plugins: [require('daisyui')],
+  plugins: [require("daisyui")],
 };

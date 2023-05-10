@@ -1,6 +1,11 @@
 <template>
     <div class="custom-page-size-a4">
         <div :class="['w-full h-full bg-no-repeat bg-cover', background]">
+            <h1 class="font-montserrat_regular">TESTER</h1>
+            <h1 class="font-montserrat_light">TESTER</h1>
+            <h1 class="font-montserrat_bold">TESTEe</h1>
+            <h1>TEST</h1>
+            <h1>TEST</h1>
         </div>
     </div>
 </template>
