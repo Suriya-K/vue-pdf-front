@@ -16,7 +16,7 @@ import {
     Legend
 } from 'chart.js'
 import { Radar } from 'vue-chartjs'
-import * as chartConfig from './dataConfig'
+import * as chartConfig from './DataChart'
 
 ChartJS.register(
     RadialLinearScale,
