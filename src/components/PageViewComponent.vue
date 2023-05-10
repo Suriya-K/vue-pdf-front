@@ -3,10 +3,40 @@
         <div class="navbar bg-white">
             <a class="">PDF Generator</a>
         </div>
-        <PageComponents background="bg-page-sum"></PageComponents>
+        <UploadComponent @uploaded="getUploadData"></UploadComponent>
+        <SummaryPageComponent :extract-data="summary_data[0]" background="bg-sum"></SummaryPageComponent>
+        <RecommandPageComponent :is_recom_vitamin='true' background="bg-rec-nutrient"></RecommandPageComponent>
+        <RecommandPageComponent background="bg-rec-disease"></RecommandPageComponent>
     </div>
 </template>
 
-<script setup lang="ts">
-import PageComponents from './PageComponents.vue';
+<script lang="ts">
+import SummaryPageComponent from './SummaryPageComponent.vue';
+import RecommandPageComponent from './RecommandPageComponent.vue';
+import UploadComponent from './UploadComponent.vue';
+import { ExtractData } from '../interfaces/summary';
+
+export default {
+    name: "PageViewComponent",
+    components: {
+        SummaryPageComponent,
+        RecommandPageComponent,
+        UploadComponent
+    },
+    data() {
+        return {
+            summary_data: [] as ExtractData[]
+        }
+    },
+    computed: {
+        moduloPage() {
+            return true;
+        }
+    },
+    methods: {
+        getUploadData(data: Array<ExtractData>) {
+            this.summary_data = data
+        }
+    }
+}
 </script>

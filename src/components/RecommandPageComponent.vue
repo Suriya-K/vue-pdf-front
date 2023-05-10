@@ -1,11 +1,6 @@
 <template>
     <div class="custom-page-size-a4">
         <div :class="['w-full h-full bg-no-repeat bg-cover', background]">
-            <h1 class="font-montserrat_regular">TESTER</h1>
-            <h1 class="font-montserrat_light">TESTER</h1>
-            <h1 class="font-montserrat_bold">TESTEe</h1>
-            <h1>TEST</h1>
-            <h1>TEST</h1>
         </div>
     </div>
 </template>
@@ -31,14 +26,23 @@ ChartJS.register(
     Tooltip,
     Legend
 )
+
 export default {
     name: "PageComponets",
-    props: ['background'],
+    props: {
+        background: String,
+        is_recom_vitamin: {
+            type: Boolean,
+            default: false
+        }
+    },
     components: {
         Radar
     },
     data() {
-        return chartConfig
+        return {
+            chartConfig
+        }
     }
 }
 </script>
