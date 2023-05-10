@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto">
-        <PageComponents></PageComponents>
+        <PageComponents background="bg-page-sum"></PageComponents>
     </div>
 </template>
 
