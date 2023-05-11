@@ -22,7 +22,7 @@
                     <!-- <img class="absolute" src="/src/assets/img/scalebar/divider.jpg"> -->
                 </div>
             </div>
-            <div class="box-content pl-32 pr-10 mt-16">
+            <div class="box-content pl-32 pr-10 mt-20">
                 <p class="font-cloud_light text-head text-cyan-700">
                     ความเสี่ยงโรคและความผิดปกติที่เกี่ยวข้องกับอาการผมบางศีรษะล้าน</p>
                 <div class="relative flex flex-row pr-20">
