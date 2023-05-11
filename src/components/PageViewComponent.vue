@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto">
         <div class="navbar bg-white">
-            <a class="">PDF Generator</a>
+            <a class="font-montserrat_bold text-head text-yellow-400">PDF Generator</a>
         </div>
         <UploadComponent @uploaded="getUploadData"></UploadComponent>
         <SummaryPageComponent :extract-data="summary_data[0]" background="bg-sum"></SummaryPageComponent>

@@ -19,6 +19,10 @@ export default {
       cloud_bold: ["Cloud-Bold", "sans-serif"],
       cloud_light: ["Cloud-Light", "sans-serif"],
     },
+    fontSize:{
+      head: ['32px','40px'],
+      small: ['24px','40px']
+    }
   },
   plugins: [require("daisyui")],
 };

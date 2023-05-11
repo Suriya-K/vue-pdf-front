@@ -1,6 +1,12 @@
 <template>
     <div class="custom-page-size-a4">
         <div :class="['w-full h-full bg-no-repeat bg-cover', background]">
+            <template v-if="is_recom_vitamin">
+                YES
+            </template>
+            <template v-else>
+                NO
+            </template>
         </div>
     </div>
 </template>

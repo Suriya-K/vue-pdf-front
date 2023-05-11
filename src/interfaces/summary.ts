@@ -32,12 +32,12 @@ export interface VitaminNeeded {
 }
 
 export interface HairRisk {
-  alopecia: string;
-  premature_gray: string;
-  psoriasis: string;
-  dry_skin: string;
-  insomnia: string;
-  premature_menopause: string;
+  alopecia: number;
+  premature_gray: number;
+  psoriasis: number;
+  dry_skin: number;
+  insomnia: number;
+  premature_menopause: number;
 }
 
 export interface ResponseToMedicine {
