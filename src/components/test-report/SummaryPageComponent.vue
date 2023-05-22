@@ -68,8 +68,8 @@ import {
     Legend
 } from 'chart.js'
 import { Radar } from 'vue-chartjs'
-import * as dataConfig from './DataChart'
-import { ExtractData, VitaminNeeded, HairRisk, ResponseToMedicine } from '../interfaces/summary'
+import * as dataConfig from '../../charts/DataChart'
+import { ExtractData, VitaminNeeded, HairRisk, ResponseToMedicine } from '../../interfaces/summary'
 import { PropType } from 'vue'
 
 

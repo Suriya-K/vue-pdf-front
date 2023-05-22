@@ -93,7 +93,7 @@ export default {
         this.emitEventChanged();
     },
     methods: {
-        async loadRecommandReference() {
+        async loadRecommandReference(): Promise<void> {
             const recom_tsv: d3.DSVRowArray<string> = await d3.tsv('/recommen_reference.tsv');
             for await (const element of recom_tsv) {
                 recommen_reference.push(element);
@@ -142,7 +142,7 @@ export default {
                 }
             });
         },
-        async assignReference() {
+        async assignReference(): Promise<void> {
             await this.loadData();
             await this.loadRecommandReference();
             await this.loadInfoReference();
@@ -152,7 +152,7 @@ export default {
             summary_data.push(info_data);
             // console.log(summary_data);
         },
-        emitEventChanged() {
+        emitEventChanged(): void {
             this.$emit("uploaded", this.summary_data);
         }
     }

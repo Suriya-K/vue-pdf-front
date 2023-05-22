@@ -17,7 +17,7 @@
 import SummaryPageComponent from './SummaryPageComponent.vue';
 import RecommandPageComponent from './RecommandPageComponent.vue';
 import UploadComponent from './UploadComponent.vue';
-import { ExtractData } from '../interfaces/summary';
+import { ExtractData } from '../../interfaces/summary';
 
 export default {
     name: "PageViewComponent",
