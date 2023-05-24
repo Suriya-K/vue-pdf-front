@@ -5,10 +5,8 @@
 .custom-page-size-a4 {
   background: white;
   display: block;
-  margin: 0 auto;
-  margin-top: 0.5cm;
-  margin-bottom: 0.5cm;
   width: 21cm;
+  margin: auto;
   height: 29.7cm;
 }
 

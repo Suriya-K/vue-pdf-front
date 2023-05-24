@@ -1,6 +1,6 @@
 <template>
     <div class="custom-page-size-a4">
-        <div :class="['w-full h-full bg-no-repeat bg-cover', background]">
+        <div :class="['w-full h-full bg-no-repeat bg-cover m-0', background]">
             <template v-if="is_recom_vitamin">
                 <div class="pt-36 pl-20 box-border flex flex-row gap-2">
                     <p class="font-montserrat_regular text-head text-cyan-700">Recommendation </p>
@@ -70,7 +70,7 @@
 
 <script lang="ts">
 import { PropType } from 'vue';
-import { ExtractData, VitaminNeeded } from '../interfaces/summary';
+import { ExtractData, VitaminNeeded } from '../../interfaces/summary';
 
 var vitaminNeed: VitaminNeeded = {
     vit_a: 'high',

@@ -4,12 +4,17 @@
             <a class="font-montserrat_bold text-head text-yellow-400">PDF Generator</a>
         </div> -->
         <UploadComponent @uploaded="getUploadData"></UploadComponent>
-        <SummaryPageComponent :extract-data="summary_data[0]" background="bg-sum"></SummaryPageComponent>
-        <RecommandPageComponent :extract-data="summary_data" :is_recom_vitamin='true' background="bg-rec-nutrient">
-        </RecommandPageComponent>
-        <RecommandPageComponent background="bg-rec-disease" :some-data="summary_data[2] && summary_data[3]"></RecommandPageComponent>
-        <RecommandPageComponent background="bg-rec-disease" :some-data="summary_data[2] && summary_data[3]"></RecommandPageComponent>
-        <RecommandPageComponent background="bg-rec-disease" :some-data="summary_data[2] && summary_data[3]"></RecommandPageComponent>
+        <div class="flex flex-col space-y-10">
+            <SummaryPageComponent :extract-data="summary_data[0]" background="bg-sum"></SummaryPageComponent>
+            <RecommandPageComponent :extract-data="summary_data" :is_recom_vitamin='true' background="bg-rec-nutrient">
+            </RecommandPageComponent>
+            <RecommandPageComponent background="bg-rec-disease" :some-data="summary_data[2] && summary_data[3]">
+            </RecommandPageComponent>
+            <RecommandPageComponent background="bg-rec-disease" :some-data="summary_data[2] && summary_data[3]">
+            </RecommandPageComponent>
+            <RecommandPageComponent background="bg-rec-disease" :some-data="summary_data[2] && summary_data[3]">
+            </RecommandPageComponent>
+        </div>
     </div>
 </template>
 
