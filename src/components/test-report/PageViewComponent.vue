@@ -3,7 +3,7 @@
         <!-- <div class="navbar bg-white">
             <a class="font-montserrat_bold text-head text-yellow-400">PDF Generator</a>
         </div> -->
-        <UploadComponent @uploaded="getUploadData"></UploadComponent>
+        <UploadComponent :report-type="report" @uploaded="getUploadData"></UploadComponent>
         <div class="flex flex-col space-y-10">
             <SummaryPageComponent :extract-data="summary_data[0]" background="bg-sum"></SummaryPageComponent>
             <RecommandPageComponent :extract-data="summary_data" :is_recom_vitamin='true' background="bg-rec-nutrient">
@@ -30,11 +30,14 @@ export default {
         SummaryPageComponent,
         RecommandPageComponent,
         UploadComponent
-    },
+    }, props: [
+        'reportType'
+    ],
     beforeMount() {
     },
     data() {
         return {
+            report: this.reportType,
             summary_data: [] as ExtractData[]
         }
     },

@@ -24,19 +24,21 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
 
-const router = useRouter()
+interface InputFileEvent extends Event {
+    target: HTMLInputElement;
+}
+
+let file_data: File;
 
 export default defineComponent({
     name: "UploadCardComponent",
-    props: ['modelValue'],
     setup() {
 
     },
     data() {
         return {
-            file_data: null,
+            file_data,
             report_type: [
                 { text: "Report Type", value: "", disabled: true },
                 { text: "Test Report", value: "test_report", disabled: false },
@@ -46,13 +48,15 @@ export default defineComponent({
         }
     },
     methods: {
-        onChange(event: any) {
-            this.file_data = event.target.files[0]
+        onChange(event: InputFileEvent) {
+            if (!event.target.files) return;
+            this.file_data = event.target.files[0] as File;
         },
         onSubmit() {
-            console.log(this.file_data);
-            const routeData = router.resolve({ path: '/' + this.selected_report, params: { data: this.file_data } });
-            window.open(routeData.href, '_blank');
+            if (!this.file_data) return;
+            let self = this;
+            self.$router.push({ name: this.selected_report, params: { reportType: this.file_data } });
+            // window.open(routeData.href, '_blank');
         }
     }
 })

@@ -10,6 +10,11 @@ export default {
         "sum": "url('/src/assets/img/page_bg/summ.jpg')",
         "rec-nutrient": "url('/src/assets/img/page_bg/recom_nutrient.jpg')",
         "rec-disease": "url('/src/assets/img/page_bg/recom_disease.jpg')",
+
+        // MUST REPLACE WITH REAL BACKGROUND
+        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk-template.png')",
+        "dcv-hr-rec": "url('/src/assets/img/dcv-template/health-risk-recommand-template.png')",
+        "dcv-hr-group": "url('/src/assets/img/dcv-template/health-risk-group-template.png')",
       },
     },
     fontFamily: {

@@ -1,5 +1,4 @@
-<template>
-</template>
+<template></template>
 
 <script lang="ts">
 import * as d3 from 'd3';
@@ -84,6 +83,9 @@ var info_data: any = {
 var summary_data: any = [];
 
 export default {
+    props: [
+        'reportType'
+    ],
     data() {
         return {
             summary_data
@@ -118,7 +120,8 @@ export default {
             });
         },
         async loadData() {
-            const data_tsv = await d3.tsv('/sample_input.tsv');
+            console.log("Assign" + this.reportType);
+            // const data_tsv = await d3.tsv('/sample_input.tsv');
             for await (const data of data_tsv) {
                 input_data.push(data);
 
