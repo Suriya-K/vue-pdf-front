@@ -24,21 +24,13 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import axios from 'axios';
 
-interface InputFileEvent extends Event {
-    target: HTMLInputElement;
-}
-
-let file_data: File;
-
+let file_data: any;
 export default defineComponent({
     name: "UploadCardComponent",
-    setup() {
-
-    },
     data() {
         return {
-            file_data,
             report_type: [
                 { text: "Report Type", value: "", disabled: true },
                 { text: "Test Report", value: "test_report", disabled: false },
@@ -48,15 +40,28 @@ export default defineComponent({
         }
     },
     methods: {
-        onChange(event: InputFileEvent) {
+        onChange(event: any) {
             if (!event.target.files) return;
-            this.file_data = event.target.files[0] as File;
+            file_data = event.target.files[0];
         },
-        onSubmit() {
-            if (!this.file_data) return;
-            let self = this;
-            self.$router.push({ name: this.selected_report, params: { reportType: this.file_data } });
-            // window.open(routeData.href, '_blank');
+        async onSubmit() {
+            if (!file_data) return;
+
+            const formData = new FormData();
+
+            try {
+                formData.append('uploadData', file_data);
+                formData.append('selectedReport', this.selected_report);
+                await axios.post('http://localhost:3000/test/upload', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+            } catch (err) {
+                console.log(err);
+            }
+            const routeData = this.$router.resolve({ name: this.selected_report });
+            window.open(routeData.href, '_blank');
         }
     }
 })

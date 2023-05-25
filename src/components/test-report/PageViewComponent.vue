@@ -3,7 +3,7 @@
         <!-- <div class="navbar bg-white">
             <a class="font-montserrat_bold text-head text-yellow-400">PDF Generator</a>
         </div> -->
-        <UploadComponent :report-type="report" @uploaded="getUploadData"></UploadComponent>
+        <!-- <UploadComponent :report-type="report" @uploaded="getUploadData"></UploadComponent> -->
         <div class="flex flex-col space-y-10">
             <SummaryPageComponent :extract-data="summary_data[0]" background="bg-sum"></SummaryPageComponent>
             <RecommandPageComponent :extract-data="summary_data" :is_recom_vitamin='true' background="bg-rec-nutrient">
@@ -23,6 +23,7 @@ import SummaryPageComponent from './SummaryPageComponent.vue';
 import RecommandPageComponent from './RecommandPageComponent.vue';
 import UploadComponent from './UploadComponent.vue';
 import { ExtractData } from '../../interfaces/summary';
+import axios from 'axios';
 
 export default {
     name: "PageViewComponent",
@@ -33,7 +34,8 @@ export default {
     }, props: [
         'reportType'
     ],
-    beforeMount() {
+    async beforeMount() {
+        await this.getUploadData();
     },
     data() {
         return {
@@ -44,8 +46,14 @@ export default {
     computed: {
     },
     methods: {
-        getUploadData(data: Array<ExtractData>) {
-            this.summary_data = data
+        async getUploadData() {
+            try {
+                const data = axios.get('http://localhost:3000/test/report');
+                console.log(data);
+                // this.summary_data = data
+            } catch (e) {
+
+            }
         },
     }
 }
