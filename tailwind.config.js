@@ -12,9 +12,9 @@ export default {
         "rec-disease": "url('/src/assets/img/page_bg/recom_disease.jpg')",
 
         // MUST REPLACE WITH REAL BACKGROUND
-        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk-template.png')",
-        "dcv-hr-rec": "url('/src/assets/img/dcv-template/health-risk-recommand-template.png')",
-        "dcv-hr-group": "url('/src/assets/img/dcv-template/health-risk-group-template.png')",
+        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk.png')",
+        "dcv-hr-rec": "url('/src/assets/img/dcv-template/health-risk-recommand.png')",
+        "dcv-hr-group": "url('/src/assets/img/dcv-template/health-risk-group.png')",
       },
     },
     fontFamily: {
@@ -23,6 +23,7 @@ export default {
       montserrat_bold: ["Montserrat-Bold", "sans-serif"],
       cloud_bold: ["Cloud-Bold", "sans-serif"],
       cloud_light: ["Cloud-Light", "sans-serif"],
+      notoSansThai: ["NotoSansThai-VariableFont_wdth"]
     },
     fontSize:{
       head: ['32px','40px'],

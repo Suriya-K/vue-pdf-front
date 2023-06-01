@@ -1,5 +1,4 @@
 <template>
-    <NavbarComponent></NavbarComponent>
     <UploadCardComponent></UploadCardComponent>
 </template>
 

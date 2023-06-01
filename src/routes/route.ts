@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import DcvReportVue from "../components/dcv-health-report/DcvReport.vue";
 import PageViewComponent from "../components/test-report/PageViewComponent.vue";
 import Home from "../components/generate-report/Home.vue";
+import TableComponentVue from "../components/dcv-health-table/TableComponent.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,6 +18,12 @@ const router = createRouter({
       path: "/dcv_report",
       name: "dcv_report",
       component: DcvReportVue,
+      props: true,
+    },
+    {
+      path: "/dcv_table",
+      name: "dcv_table",
+      component: TableComponentVue,
       props: true,
     },
   ],

@@ -48,7 +48,7 @@ export default {
     methods: {
         async getUploadData() {
             try {
-                const data = axios.get('http://localhost:3000/test/report');
+                const data = await axios.get('http://localhost:3333/test');
                 console.log(data);
                 // this.summary_data = data
             } catch (e) {

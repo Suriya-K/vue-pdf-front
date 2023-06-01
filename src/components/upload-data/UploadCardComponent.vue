@@ -34,7 +34,7 @@ export default defineComponent({
             report_type: [
                 { text: "Report Type", value: "", disabled: true },
                 { text: "Test Report", value: "test_report", disabled: false },
-                { text: "DCV Health Report", value: "dcv_report", disabled: false }
+                { text: "DCV Health Report", value: "dcv_table", disabled: false }
             ],
             selected_report: '',
         }
@@ -45,23 +45,24 @@ export default defineComponent({
             file_data = event.target.files[0];
         },
         async onSubmit() {
-            if (!file_data) return;
+            // if (!file_data) return;
 
             const formData = new FormData();
 
-            try {
-                formData.append('uploadData', file_data);
-                formData.append('selectedReport', this.selected_report);
-                await axios.post('http://localhost:3000/test/upload', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-            } catch (err) {
-                console.log(err);
-            }
-            const routeData = this.$router.resolve({ name: this.selected_report });
-            window.open(routeData.href, '_blank');
+            // try {
+            //     formData.append('uploadData', file_data);
+            //     formData.append('selectedReport', this.selected_report);
+            //     await axios.post('http://localhost:3000/test/upload', formData, {
+            //         headers: {
+            //             'Content-Type': 'multipart/form-data'
+            //         }
+            //     })
+            // } catch (err) {
+            //     console.log(err);
+            // }
+            // const routeData = this.$router.resolve({ name: this.selected_report });
+            this.$router.push({name:this.selected_report});
+            // window.open(routeData.href, '_blank');
         }
     }
 })
