@@ -22,48 +22,46 @@
         </div>
     </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
-import axios from 'axios';
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+// import axios from 'axios';
 
+
+const router = useRouter();
+
+// @ts-ignore
 let file_data: any;
-export default defineComponent({
-    name: "UploadCardComponent",
-    data() {
-        return {
-            report_type: [
-                { text: "Report Type", value: "", disabled: true },
-                { text: "Test Report", value: "test_report", disabled: false },
-                { text: "DCV Health Report", value: "dcv_table", disabled: false }
-            ],
-            selected_report: '',
-        }
-    },
-    methods: {
-        onChange(event: any) {
-            if (!event.target.files) return;
-            file_data = event.target.files[0];
-        },
-        async onSubmit() {
-            // if (!file_data) return;
+let selected_report: string = '';
 
-            const formData = new FormData();
+const report_type = [
+    { text: "Report Type", value: "", disabled: true },
+    { text: "Test Report", value: "test_report", disabled: false },
+    { text: "DCV Health Report", value: "dcv_table", disabled: false }];
 
-            // try {
-            //     formData.append('uploadData', file_data);
-            //     formData.append('selectedReport', this.selected_report);
-            //     await axios.post('http://localhost:3000/test/upload', formData, {
-            //         headers: {
-            //             'Content-Type': 'multipart/form-data'
-            //         }
-            //     })
-            // } catch (err) {
-            //     console.log(err);
-            // }
-            // const routeData = this.$router.resolve({ name: this.selected_report });
-            this.$router.push({name:this.selected_report});
-            // window.open(routeData.href, '_blank');
-        }
-    }
-})
+function onChange(event: any) {
+    if (!event.target.files) return;
+    file_data = event.target.files[0];
+}
+
+async function onSubmit() {
+    // if (!file_data) return;
+
+    // const formData = new FormData();
+
+    // try {
+    //     formData.append('uploadData', file_data);
+    //     formData.append('selectedReport', this.selected_report);
+    //     await axios.post('http://localhost:3000/test/upload', formData, {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data'
+    //         }
+    //     })
+    // } catch (err) {
+    //     console.log(err);
+    // }    
+    // const routeData = this.$router.resolve({ name: this.selected_report });
+    router.push({ name: selected_report });
+
+    // window.open(routeData.href, '_blank');
+}
 </script>

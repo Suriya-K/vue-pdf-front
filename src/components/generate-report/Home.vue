@@ -2,12 +2,6 @@
     <UploadCardComponent></UploadCardComponent>
 </template>
 
-<script lang="ts">
-import NavbarComponent from'../navigation/NavbarComponent.vue'
+<script setup lang="ts">
 import UploadCardComponent from '../upload-data/UploadCardComponent.vue';
-
-export default {
-    name: "Home",
-    components: { NavbarComponent,UploadCardComponent }
-}
 </script>
