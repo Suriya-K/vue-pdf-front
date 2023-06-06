@@ -1,8 +1,8 @@
 <template>
     <div class="container mx-auto flex flex-col space-y-5" ref="dcvReport">
         <HealthRiskReport background="bg-dcv-hr-report"></HealthRiskReport>
-        <GroupHealthRisk background="bg-dcv-hr-group opacity-50"></GroupHealthRisk>
-        <HealthRiskRecommend background="bg-dcv-hr-rec opacity-50"></HealthRiskRecommend>
+        <GroupHealthRisk background="bg-dcv-hr-group"></GroupHealthRisk>
+        <HealthRiskRecommend background="bg-dcv-hr-rec"></HealthRiskRecommend>
     </div>
 </template>
 

@@ -12,9 +12,9 @@ export default {
         "rec-disease": "url('/src/assets/img/page_bg/recom_disease.jpg')",
 
         // MUST REPLACE WITH REAL BACKGROUND
-        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk.png')",
-        "dcv-hr-rec": "url('/src/assets/img/dcv-template/health-risk-recommand.png')",
-        "dcv-hr-group": "url('/src/assets/img/dcv-template/health-risk-group.png')",
+        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk-template.png')",
+        "dcv-hr-rec": "url('/src/assets/img/dcv-template/health-risk-recommand-template.png')",
+        "dcv-hr-group": "url('/src/assets/img/dcv-template/health-risk-group-template.png')",
       },
     },
     fontFamily: {
