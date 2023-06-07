@@ -31,4 +31,9 @@
     font-family: "Cloud-Light";
     src: url("./font/Cloud-Light.ttf");
   }
+
+  @font-face {
+    font-family: "NotoSansThai-VariableFont";
+    src: url('./fonts/NotoSansThai-VariableFont.ttf');
+  }
 }

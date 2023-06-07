@@ -23,4 +23,11 @@ interface DcvHealth {
     sex: string
     sample_perc: number
   }
+
+  interface GroupNameList {
+    name: string;
+    score: string;
+    checkup: string;
+    risk_reduction: string;
+}
   
