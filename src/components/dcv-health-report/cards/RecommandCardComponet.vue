@@ -21,6 +21,7 @@
                         </div>
                         <div class="pl-14 pr-9">
                             <p class="font-notoSansThai text-very_small">
+                                <!-- teat -->
                                 {{ item.risk_reduction }}
                             </p>
                         </div>
