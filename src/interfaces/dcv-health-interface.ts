@@ -29,5 +29,6 @@ interface DcvHealth {
     score: string;
     checkup: string;
     risk_reduction: string;
+    supplement: string;
 }
   
