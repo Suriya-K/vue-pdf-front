@@ -6,13 +6,18 @@ export default {
       center: true,
     },
     extend: {
+      colors:{
+        'dcv-low' : '#82C18F',
+        'dcv-med':'#DDB557',
+        'dcv-high':'#B75A4D'
+      },
       backgroundImage: {
         "sum": "url('/src/assets/img/page_bg/summ.jpg')",
         "rec-nutrient": "url('/src/assets/img/page_bg/recom_nutrient.jpg')",
         "rec-disease": "url('/src/assets/img/page_bg/recom_disease.jpg')",
 
         // MUST REPLACE WITH REAL BACKGROUND
-        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk-template.png')",
+        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk.png')",
         "dcv-hr-rec": "url('/src/assets/img/dcv-template/health-risk-recommand.png')",
         "dcv-hr-group": "url('/src/assets/img/dcv-template/health-risk-group.png')",
       },
