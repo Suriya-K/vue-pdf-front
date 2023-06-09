@@ -3,43 +3,30 @@
         <div :class="['w-full h-full bg-no-repeat bg-cover m-0', props.background]">
             <div class="flex flex-row flex-wrap pl-12 pt-28">
                 <div class="basis-1/2 pt-3">
-                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" 
-                        :group-list="true" 
-                        :name="diseaseName[1]" 
-                        :score="diseaseScore[1]"
+                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" :group-list="true" 
+                        :name="diseaseName[1]"
+                        :score="diseaseScore[1]" 
                         :group-list-score="getGroupScore('brain')" />
-                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.01rem'" 
-                        :group-list="true" 
-                        :name="diseaseName[2]" 
-                        :score="diseaseScore[2]"
-                        :group-list-score="getGroupScore('cardiovascular')" />
-                    <CardComponent class="w-20 pb-4"  
-                        :group-list="true"
-                        :name="diseaseName[3]" 
-                        :score="diseaseScore[3]" 
-                        :group-list-score="getGroupScore('chest_abdo')" />
-                    <CardComponent class="w-20" :padding-bottom="'5rem'" 
-                        :group-list="true" 
-                        :name="diseaseName[4]" 
-                        :score="diseaseScore[4]"
+                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.01rem'" :group-list="true" 
+                        :name="diseaseName[2]"
+                        :score="diseaseScore[2]" 
                         :group-list-score="getGroupScore('eent')" />
+                    <CardComponent class="w-20 pb-4" :group-list="true" 
+                        :name="diseaseName[3]" 
+                        :score="diseaseScore[3]"
+                        :group-list-score="getGroupScore('cardiovascular')" />
+                    <CardComponent class="w-20" :padding-bottom="'5rem'" :group-list="true" 
+                        :name="diseaseName[4]"
+                        :score="diseaseScore[4]" 
+                        :group-list-score="getGroupScore('chest_abdo')" />
                 </div>
                 <div class="basis-1/2 pl-1 pt-3">
-                    <CardComponent class="w-20 pb-4" :padding-bottom="'15.5rem'" 
-                        :group-list="true" 
-                        :name="diseaseName[5]" 
-                        :score="diseaseScore[5]"
-                        :group-list-score="getGroupScore('infectious')" />
-                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" 
-                        :group-list="true"
-                        :name="diseaseName[6]" 
-                        :score="diseaseScore[6]"
-                        :group-list-score="getGroupScore('joint')" />
-                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" 
-                        :group-list="true"
-                        :name="diseaseName[7]" 
-                        :score="diseaseScore[7]"
-                        :group-list-score="getGroupScore('urogenital')" />
+                    <CardComponent class="w-20 pb-4" :padding-bottom="'15.5rem'" :group-list="true" :name="diseaseName[5]"
+                        :score="diseaseScore[5]" :group-list-score="getGroupScore('infectious')" />
+                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" :group-list="true" :name="diseaseName[6]"
+                        :score="diseaseScore[6]" :group-list-score="getGroupScore('urogenital')" />
+                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" :group-list="true" :name="diseaseName[7]"
+                        :score="diseaseScore[7]" :group-list-score="getGroupScore('joint')" />
                 </div>
             </div>
         </div>
@@ -57,13 +44,14 @@ const props = defineProps({
 const diseaseName = ref(['EMPTY']);
 const diseaseScore = ref([0.00]);
 
-onUpdated(() => {
-})
-
 const groupName = ref([
     {
         group: 'brain',
         name: 'กลุ่มโรคสมอง',
+    },
+    {
+        group: 'eent',
+        name: 'กลุ่มโรคหูตาคอจมูก',
     },
     {
         group: 'cardiovascular',
@@ -74,20 +62,16 @@ const groupName = ref([
         name: 'กลุ่มโรคปอดและท้อง',
     },
     {
-        group: 'eent',
-        name: 'กลุ่มโรคหูตาคอจมูก',
-    },
-    {
         group: 'infectious',
-        name: 'ติดเชื้อ',
-    },
-    {
-        group: 'joint',
-        name: 'กลุ่มโรคข้อต่อ',
+        name: 'กลุ่มโรคติดเชื้อ',
     },
     {
         group: 'urogenital',
         name: 'กลุ่มโรคทางเดินปัสสาวะและสืบพันธ์ุ',
+    },
+    {
+        group: 'joint',
+        name: 'กลุ่มโรคข้อต่อ',
     },
 ])
 
@@ -119,7 +103,6 @@ function getGroupScore(name: string): any[] {
         }
     });
 
-    console.log(sampleGroup);
     return sampleGroup;
 }
 

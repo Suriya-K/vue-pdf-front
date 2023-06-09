@@ -1,6 +1,7 @@
 <template>
     <div class="container mx-auto flex flex-col space-y-5" ref="dcvReport">
-        <HealthRiskReport background="bg-dcv-hr-report" :sample-data-highest-score="getHighestScore()" />
+        <HealthRiskReport :group-score="getGroupScoreByName()" background="bg-dcv-hr-report"
+            :sample-data-highest-score="getHighestScore()" />
         <GroupHealthRisk background="bg-dcv-hr-group" :group-sample="groupData" />
         <div v-for="item in chunks">
             <HealthRiskRecommend :recommand-data="item" background="bg-dcv-hr-rec"></HealthRiskRecommend>
@@ -23,6 +24,37 @@ const props = defineProps({
 const sampleData = ref<any>([]);
 const groupData = ref<any>([]);
 const chunks = ref<DcvHealthLists[][]>([])
+
+const groupName = ref([
+    {
+        group: 'brain',
+        name: 'กลุ่มโรคสมอง',
+    },
+    {
+        group: 'eent',
+        name: 'กลุ่มโรคหูตาคอจมูก',
+    },
+    {
+        group: 'cardiovascular',
+        name: 'กลุ่มโรคหัวใจและหลอดเลือด',
+    },
+    {
+        group: 'chest_abdo',
+        name: 'กลุ่มโรคปอดและท้อง',
+    },
+    {
+        group: 'infectious',
+        name: 'กลุ่มโรคติดเชื้อ',
+    },
+    {
+        group: 'urogenital',
+        name: 'กลุ่มโรคทางเดินปัสสาวะและสืบพันธ์ุ',
+    },
+    {
+        group: 'joint',
+        name: 'กลุ่มโรคข้อต่อ',
+    },
+])
 
 onBeforeMount(async () => {
     if (!props.sample_number) return
@@ -66,9 +98,35 @@ async function getSampleGroup() {
         }
         return result;
     }, {});
+    return groupedData;
+}
+
+function getGroupScoreByName() {
+    const groupedData: Record<string, any[]> = {};
+
+    if (groupName.value && groupName.value.length > 0) {
+        groupName.value.forEach((element: any) => {
+            if (element === undefined) return;
+
+            const group = groupData.value[element.group];
+            if (!groupedData[element.group]) {
+                groupedData[element.group] = [];
+            }
+
+            let sum = 0;
+            group.forEach((sample: any) => {
+                sum += sample.disease_score;
+            });
+
+            const averageScore = sum / group.length;
+            groupedData[element.group].push({ name: element.name.replace('กลุ่มโรค', ''), score: averageScore });
+        });
+    }
+
     console.log(groupedData);
     return groupedData;
 }
+
 
 
 
