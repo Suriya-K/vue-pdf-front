@@ -1,8 +1,8 @@
 <template>
     <div class="custom-page-size-a4">
         <div :class="['w-full h-full bg-no-repeat bg-cover m-0', background]">
-            <div class="flex flex-col gap-5" v-for="(item) in data">
-                <RecommandCardComponet :group-name="findGroupName(item.group)" :list="item.data"></RecommandCardComponet>
+            <div class="relative" v-for="(item) in data">
+                <RecommandCardComponet class="padd" :group-name="findGroupName(item.group)" :list="item.data"></RecommandCardComponet>
             </div>
         </div>
     </div>
