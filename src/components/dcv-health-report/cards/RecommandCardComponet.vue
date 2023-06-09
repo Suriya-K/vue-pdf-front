@@ -9,7 +9,7 @@
                     <div v-for="(item, index) in list">
                         <div class="grid grid-cols-10 w-auto ">
                             <p class="font-notoSansThai text-[10px] text-gray-600 text-justify  col-span-2 px-4 font-bold" v-html="item.name"></p>
-                            <p class="font-notoSansThai text-[10px] text-gray-600 text-right  col-span-1 px-4">{{ item.score }}</p>
+                            <p class="font-notoSansThai text-[10px] text-gray-600 text-right  col-span-1 px-4">{{ setScoreString(item.score) }}</p>
                             <p class="font-notoSansThai text-[10px] text-gray-600 text-justify  col-span-3 px-4">{{ item.checkup }}</p>
                             <div class="font-notoSansThai text-[10px] text-gray-600 text-justify col-span-4 px-4 flex-col">
                                 <p class="">{{ item.risk_reduction }}</p>
@@ -30,9 +30,8 @@
 
 const props = defineProps({
     groupName: { type: String, default: 'กลุ่มโรคสมอง' },
-    headerState: { type: String, required: true },
     list: {
-        type: Array<DcvHealthLists>, default: [
+        type: Array<any>, default: [
             {
                 name: 'โรคหลอดเลือดสมอง <br> (Stroke)',
                 score: '10.00',
@@ -53,6 +52,10 @@ const props = defineProps({
 
 function isNotLastIndex(index: number): boolean {
     return index !== props.list.length - 1;
+}
+
+function setScoreString(score: number): string {
+    return score.toFixed(2).toString();
 }
 </script>
 
