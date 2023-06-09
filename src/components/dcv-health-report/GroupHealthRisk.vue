@@ -1,7 +1,7 @@
 <template>
     <div class="custom-page-size-a4">
         <div :class="['w-full h-full bg-no-repeat bg-cover m-0', props.background]">
-            <div class="flex flex-row flex-wrap pl-12 pt-28 gap-2">
+            <div class="flex flex-row flex-wrap pl-12 pt-28">
                 <div class="basis-1/2 pt-3">
                     <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" :background-state="`url(${cardState.low})`"
                         :group-list="true" />
@@ -11,7 +11,7 @@
                     <CardComponent class="w-20" :padding-bottom="'5rem'" :background-state="`url(${cardState.low})`"
                         :group-list="true" />
                 </div>
-                <div class="basis-1/2 pl-1">
+                <div class="basis-1/2 pl-1 pt-3">
                     <CardComponent class="w-20 pb-4" :padding-bottom="'15.5rem'" :background-state="`url(${cardState.low})`"
                         :group-list="true" />
                     <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" :background-state="`url(${cardState.low})`"

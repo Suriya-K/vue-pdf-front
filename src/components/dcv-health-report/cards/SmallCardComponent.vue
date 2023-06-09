@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!props.additionSize">
+    <div v-if="!additionSize">
         <div class="bg w-[7rem] h-12 bg-contain bg-no-repeat">
             <div class="flex flex-row gap-4 align-middle">
                 <p class="pl-2 pt-2 font-notoSansThai font-bold text-white text-very_small">{{ name }}</p>

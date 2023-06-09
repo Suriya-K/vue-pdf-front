@@ -12,7 +12,7 @@
                             <div :class="setColor()"
                                 class="flex w-full my-auto items-center justify-center py-1.5 px-5 rounded-lg">
                                 <!-- score here -->
-                                <p class="font-notoSansThai text-white">{{ score }}</p>
+                                <p class="font-notoSansThai text-white">{{ setScoreString(score) }}</p>
                             </div>
                         </div>
                     </div>
@@ -74,11 +74,11 @@
 <script setup lang="ts">
 const props = defineProps({
     backgroundState: { type: String, required: true },
-    paddingBottom: { type: String, default: '0.5rem' },
     name: { type: String, required: true, default: 'มะเร็งลำไส้ <br> (Colorectal cancer)' },
     score: { type: Number, required: true, default: 1.1 },
     intro: { type: String, required: true, default: 'มะเร็งลำไส้ใหญ่และทวารหนักเป็นมะเร็งพบบ่อยเป็นอันดับที่3ของคนไทยอาการมีได้ตั้งแต่การขับถ่ายผิดปกติถ่ายอุจจาระเป็นมูกเลือดหรือเป็นเลือดแดงสดจนถึงซีดเบื่ออาหารและน้ำหนักลดโดยไม่ทราบสาเหตุ' },
-    groupList: { type: Boolean, required: true, default: false },
+    groupList: { type: Boolean, required: false, default: false },
+    paddingBottom: { type: String, default: '0.5rem' },
     extraStretch: { type: Boolean, required: false, default: false },
     groupListScore: {
         type: Array<{ name: string, score: number }>, default: [

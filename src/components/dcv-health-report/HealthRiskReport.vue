@@ -21,9 +21,10 @@
                     </div>
                 </div>
                 <div class="grid basis-1/2 gap-4 pl-1">
-                    <CardComponent class="bg-cover w-[20.4rem] h-64" :background-state="`url(${cardState.low})`" />
-                    <CardComponent class="bg-cover w-[20.4rem] h-64" :background-state="`url(${cardState.low})`" />
-                    <CardComponent class="bg-cover w-[20.4rem] h-64" :background-state="`url(${cardState.low})`" />
+                    <div v-for="item in sampleDataHighestScore">
+                        <CardComponent class="bg-cover w-[20.4rem] h-64" :background-state="`url(${cardState.low})`"
+                            :name="item.risk_disease" :score="item.disease_score" :intro="item.intro" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,7 +34,11 @@
 <script setup lang="ts">
 import CardComponent from './cards/CardComponent.vue';
 import SmallCardComponent from './cards/SmallCardComponent.vue';
-const props = defineProps({ background: String });
+const props = defineProps({
+    background: String,
+    sampleDataHighestScore: { type: Array<DcvHealth>, required: true }
+});
+// console.log(props.sampleDataHighestScore)
 const cardState = {
     high: '/src/assets/img/dcv-report/large-box/large-box-high.png',
     med: '/src/assets/img/dcv-report/large-box/large-box-med.png',
