@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto flex flex-col space-y-5" ref="dcvReport">
-        <HealthRiskReport :group-score="getGroupScoreByName()" background="bg-dcv-hr-report"
+        <HealthRiskReport :sample_number="sample_number" :group-score="getGroupScoreByName()" background="bg-dcv-hr-report"
             :sample-data-highest-score="getHighestScore()" />
         <GroupHealthRisk background="bg-dcv-hr-group" :group-sample="groupData" />
         <div v-for="item in chunks">

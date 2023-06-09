@@ -2,7 +2,7 @@
     <div class="custom-page-size-a4">
         <div :class="['w-full h-full bg-no-repeat bg-cover m-0', props.background]">
             <div class="pl-14 pt-[5.1rem]">
-                <h1 class="font-notoSansThai text-small text-gray-600">SAMPLE108</h1>
+                <h1 class="font-notoSansThai text-small text-gray-600">{{sample_number}}</h1>
             </div>
             <div class="flex flex-row flex-wrap pl-12 py-[9.6rem]">
                 <div class="basis-1/2 pl-1 pt-[1.8rem]">
@@ -75,6 +75,7 @@ import CardComponent from './cards/CardComponent.vue';
 import SmallCardComponent from './cards/SmallCardComponent.vue';
 const props = defineProps({
     background: String,
+    sample_number: { type: String, required: true },
     sampleDataHighestScore: { type: Array<DcvHealth>, required: true },
     groupScore: <any>Object
 });
