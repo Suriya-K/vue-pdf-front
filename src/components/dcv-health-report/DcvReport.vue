@@ -23,7 +23,8 @@ const props = defineProps({
 // change type later
 const sampleData = ref<any>([]);
 const groupData = ref<any>([]);
-const chunks = ref<DcvHealthLists[][]>([])
+const transformedArray = ref<any>([]);
+const chunks = ref<any>([])
 
 const groupName = ref([
     {
@@ -64,6 +65,8 @@ onBeforeMount(async () => {
         })
     sampleData.value = extractAndGroupSample(sample);
     groupData.value = await getSampleGroup();
+    const groupedData = getGroupScoreGreatherThanSix(); // Get the grouped data using your existing function
+    transformedArray.value = transformGroupedDataToArray(groupedData);
     calculatedRecommendPage();
 })
 
@@ -127,19 +130,74 @@ function getGroupScoreByName() {
     return groupedData;
 }
 
+function getGroupScoreGreatherThanSix() {
+    const groupedData: Record<string, any[]> = {};
 
+    if (groupName.value && groupName.value.length > 0) {
+        groupName.value.forEach((element: any) => {
+            if (element === undefined) return;
 
+            const group = groupData.value[element.group];
+            if (!groupedData[element.group]) {
+                groupedData[element.group] = [];
+            }
 
+            group.forEach((sample: any) => {
+                if (sample.disease_score > 6) {
+                    groupedData[element.group].push({
+                        name: sample.risk_disease,
+                        score: sample.disease_score,
+                        checkup: sample.checkup,
+                        risk_reduction: sample.risk_reduction,
+                        supplement : sample.supplement
+                    });
+                }
+            });
+        });
+    }
+
+    // Remove Empty Group
+    Object.keys(groupedData).forEach((key) => {
+        if (groupedData[key].length === 0) {
+            delete groupedData[key];
+        }
+    });
+    return groupedData;
+}
+
+function transformGroupedDataToArray(groupedData: Record<string, any[]>): any[] {
+    const result: any[] = [];
+
+    for (const groupKey in groupedData) {
+        if (groupedData.hasOwnProperty(groupKey)) {
+            const group = groupedData[groupKey];
+            result.push({
+                group: groupKey,
+                data: group,
+            });
+        }
+    }
+
+    return result;
+}
 
 function calculatedRecommendPage() {
-    const dcvMockData: DcvHealthLists[] = [];
     const chunkSize = 7;
+    const transformedArrayValue = transformedArray.value;
+    const chuckList:any[] = [];
     // const chunks: DcvHealthLists[][] = [];
-
-    for (let i = 0; i < dcvMockData.length; i += chunkSize) {
-        const chunk = dcvMockData.slice(i, i + chunkSize);
-        chunks.value.push(chunk);
+    for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
+        const sliceChunks = transformedArrayValue.slice(i, i + chunkSize);
+        chuckList.push(sliceChunks);
+        // Perform further operations on the chunk as needed
     }
+    chunks.value = chuckList;
+    console.log(chunks.value);
+    // for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
+    //     console.log(transformedArray.value[i]);
+    //     // const chunk = transformedArray[i].data[i].slice(i, i + chunkSize);
+    //     // chunks.value.push(chunk);
+    // }
 }
 
 </script>
