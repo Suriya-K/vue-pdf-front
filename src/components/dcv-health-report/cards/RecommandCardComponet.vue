@@ -3,11 +3,7 @@
         <p class="font-notoSansThai font-bold text-black text-small_long pl-8 pt-1">{{ groupName }}</p>
         <div class="grid grid-rows-[auto,1fr,auto] w-[44rem] h-28 pt-[0.3rem]">
             <!-- start here -->
-<<<<<<< HEAD
-            <div class="relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.2)] ring-1 ring-gray-900/5 mx-auto rounded-lg w-[684px] bg-white">
-=======
             <div class="drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] ring-1 ring-gray-900/5 mx-auto rounded-lg w-full bg-white">
->>>>>>> main
                 <div class="bg-red-600 w-full h-auto p-1 rounded-t-lg"></div>
                 <div class="pt-5 pl-2 shadow-xl ring-1 ring-gray-900/5 mx-auto  rounded-lg">
                     <div v-for="(item, index) in list">
