@@ -6,8 +6,9 @@
             <div class="relative pb-5 px-2 shadow-xl ring-1 ring-gray-900/5 mx-auto max-w-lg rounded-lg">
                 <!-- replace below with v-if -->
                 <div class="mx-auto max-w-md">
-                    <div class="flex flex-row justify-center gap-12 pt-4">
-                        <p class="font-notoSansThai text-gray-800 font-bold ml-5" v-html="name"></p>
+                    <div class="flex flex-row justify-center pt-4 pl-5 pr-2">
+                        <p class="font-notoSansThai text-gray-800 font-bold whitespace-pre-line mr-auto" >{{ name.replace(" (","\n(") }}</p>
+                        <!-- <p class="font-notoSansThai text-gray-800 font-bold ml-5" v-html="name"></p> -->
                         <div class="relative ">
                             <div :class="setColor()" class="flex w-full my-auto items-center justify-center py-1.5 px-5 rounded-lg">
                                 <!-- score here -->
@@ -15,7 +16,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="border-t-1 px-7 mt-5 border-gray-300 w-auto ">
+                    <hr class="border-t-1 px-7 mt-3 border-gray-300 w-11/12 mx-auto">
                     <div class="w-auto pl-5 pr-5 pt-6 pb-7">
                         <!-- intro here -->
                         <p class="font-notoSansThai text-[13px] text-gray-600 w-full">
@@ -58,7 +59,7 @@
                     <hr class="border-t-1 px-7 mt-3 border-gray-300 w-11/12 mx-auto">
                     <div class="w-auto pl-5 pr-2 pt-5 pb-2">
                         <!-- intro here -->
-                        <div v-for="item in groupListScore" class="flex flex-row gap-24">
+                        <div v-for="item in groupListScore.sort((a, b) => b.score - a.score)" class="flex flex-row gap-24">
                             <p class="font-notoSansThai text-very_small text-gray-600 text-left mr-auto"> {{ item.name }}</p>
                             <p class="font-notoSansThai text-very_small text-gray-600 ml-auto mt-0.5">
                                 {{ setScoreString(item.score) }}

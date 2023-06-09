@@ -17,23 +17,28 @@
                             :line-state="setLineColor('eent')"
                             :name="props.groupScore['eent'][0].name" :score="props.groupScore['eent'][0].score"
                             :line-no="2" />
-                        <SmallCardComponent 
-                            :background-state="`url(${setSmallCardColor('cardiovascular')})`" 
-                            :line-state="setLineColor('cardiovascular')"
-                            :name="props.groupScore['cardiovascular'][0].name"
-                            :score="props.groupScore['cardiovascular'][0].score" :line-no="3" />
-                        <SmallCardComponent 
-                            :background-state="`url(${setSmallCardColor('chest_abdo')})`" 
-                            :line-state="setLineColor('chest_abdo')"
-                            :name="props.groupScore['chest_abdo'][0].name" 
-                            :score="props.groupScore['chest_abdo'][0].score"
-                            :line-no="4" />
-                        <SmallCardComponent 
+                            <SmallCardComponent 
                             :background-state="`url(${setSmallCardColor('infectious')})`" 
                             :line-state="setLineColor('infectious')"
                             :name="props.groupScore['infectious'][0].name" 
                             :score="props.groupScore['infectious'][0].score"
+                            :line-no="3" />
+                        <div class="pt-0 pb-2">
+                            <SmallCardComponent 
+                            :addition-size="true" 
+                            :background-state="`url(${setSmallCardColor('cardiovascular')})`"
+                            :line-state="setLineColor('cardiovascular')"
+                            :name="props.groupScore['cardiovascular'][0].name"
+                            :score="props.groupScore['cardiovascular'][0].score" 
+                            :line-no="4" />
+                        </div>
+                            <SmallCardComponent 
+                            :background-state="`url(${setSmallCardColor('chest_abdo')})`" 
+                            :line-state="setLineColor('chest_abdo')"
+                            :name="props.groupScore['chest_abdo'][0].name" 
+                            :score="props.groupScore['chest_abdo'][0].score"
                             :line-no="5" />
+                        
                         <div class="pt-2 pb-2">
                             <SmallCardComponent 
                                 :addition-size="true" 
@@ -52,6 +57,7 @@
                                 :line-no="7" />
                         </div>
                     </div>
+                    <div class="mt-[12.8rem] pl-2 pt-1 font-notoSansThai text-very_small text-gray-700 whitespace-pre-line">* คำนวณโดยใช้คะแนนจากดีเอ็นเอ (polygenic risk score) ร่วมกับ<br>ปัจจัยด้านความรุนแรงของโรค </div>
                 </div>
                 <div class="grid basis-1/2 gap-4 pl-1">
                     <div v-for="item in sampleDataHighestScore">

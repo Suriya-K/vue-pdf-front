@@ -1,9 +1,9 @@
 <template>
     <div v-if="!additionSize">
         <div class="bg w-[7rem] h-12 bg-contain bg-no-repeat">
-            <div class="flex flex-row gap-4 align-middle">
+            <div class="flex flex-row align-middle pr-4">
                 <p class="pl-2 pt-2 font-notoSansThai font-bold text-white text-very_small">{{ name }}</p>
-                <p class="pt-2 font-notoSansThai font-bold text-white text-very_small">{{ setScoreString(score) }}</p>
+                <p class="pt-2 font-notoSansThai font-bold text-white text-very_small ml-auto">{{ setScoreString(score) }}</p>
             </div>
         </div>
         <div class="absolute pl-[7.3rem] mt-[-2.2rem]">
@@ -13,9 +13,9 @@
     </div>
     <div v-else>
         <div class="bg w-[8.4rem] h-14 bg-contain bg-no-repeat">
-            <div class="flex flex-row gap-4 align-middle">
-                <p class="pl-2 pt-1 font-notoSansThai font-bold text-white text-very_small" v-html="nameLong"></p>
-                <p class="font-notoSansThai font-bold text-white text-very_small self-center">{{ setScoreString(score) }}
+            <div class="flex flex-row gap-4 align-middle pr-5">
+                <p class="pl-2 pt-1 font-notoSansThai font-bold text-white text-very_small whitespace-pre-line" >{{ name.replace(/หลอด/,"\nหลอด").replace(/วะ/,"วะ\n") }}</p>
+                <p class="font-notoSansThai font-bold text-white text-very_small self-center ml-auto">{{ setScoreString(score) }}
                 </p>
             </div>
         </div>
