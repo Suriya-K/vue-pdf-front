@@ -7,16 +7,23 @@ import axios from 'axios';
 import { onBeforeMount, ref } from 'vue';
 import PaginationComponent from './PaginationComponent.vue';
 
-let data = ref([]);
+let data = ref(<any>[]);
 
 async function getDcvLists() {
-    const { data: response } = await axios.get("http://localhost:3333/test")
-    return response.data;
+    const data = await axios.get("http://localhost:3333/dcv-get")
+        .then(response => {
+            return response.data
+        })
+    return data;
 }
 
 onBeforeMount(async () => {
-    const dcvLists = await getDcvLists();
-    data.value = dcvLists;
+    let dcvLists = await getDcvLists();
+    let dcvArray = [];
+    for (let key in dcvLists.data) {
+        dcvArray.push(key);
+    }
+    data.value = dcvArray;
 })
 
 </script>

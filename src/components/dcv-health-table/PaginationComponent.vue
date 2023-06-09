@@ -6,17 +6,13 @@
                 <tr>
                     <th>#</th>
                     <th>Sample Number</th>
-                    <th>Sex</th>
-                    <th>Sample Percent</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(item, index) in displayedItems" :key="index" :item="item">
                     <th>{{ index + 1 }}</th>
-                    <th>{{ item.sample?.sample_number }}</th>
-                    <th>{{ item.sample?.sex }}</th>
-                    <th>{{ item.sample?.sample_perc }}</th>
+                    <th>{{ item }}</th>
                     <th>
                         <button class="btn btn-outline btn-success btn-sm mr-2" @click="viewReport(item)">View</button>
                         <button class="btn btn-outline btn-warning btn-sm">Print PDF</button>
@@ -31,13 +27,13 @@
     </div>
 </template>
 
-<script lang="ts">
+<script  lang="ts">
 import { ref, computed, watch, toRaw } from 'vue';
 
 export default {
     props: {
         items: {
-            type: Array<DcvHealthLists>,
+            type: Array<String>,
             required: true
         },
         itemsPerPage: {
@@ -46,10 +42,10 @@ export default {
         },
     },
     methods: {
-        viewReport(report: DcvHealthLists) {
-            console.log(toRaw(report));
-            const routeData = this.$router.push({ name: 'dcv_report', params: { report: 'fuck' } });
-            // window.open(routeData, '_blank');
+        viewReport(reportNumber: string) {
+            console.log(reportNumber);
+            const routeData = this.$router.resolve({ name: 'dcv_report', params: { sample_number: reportNumber } });
+            window.open(routeData.href, '_blank');
         }
     },
     setup(props) {
