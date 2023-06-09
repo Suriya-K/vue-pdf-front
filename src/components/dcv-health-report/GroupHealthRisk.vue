@@ -66,6 +66,10 @@ const groupName = ref([
         name: 'กลุ่มโรคติดเชื้อ',
     },
     {
+        group: 'joint',
+        name: 'กลุ่มโรคข้อต่อ',
+    },
+    {
         group: 'urogenital',
         name: 'กลุ่มโรคทางเดินปัสสาวะและสืบพันธ์ุ',
     },
