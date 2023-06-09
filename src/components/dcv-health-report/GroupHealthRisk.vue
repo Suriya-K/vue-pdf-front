@@ -3,14 +3,22 @@
         <div :class="['w-full h-full bg-no-repeat bg-cover m-0', props.background]">
             <div class="flex flex-row flex-wrap pl-12 pt-28">
                 <div class="basis-1/2 pt-3">
-                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" :group-list="true" :name="diseaseName[1]"
-                        :score="diseaseScore[1]" :group-list-score="getGroupScore('brain')" />
-                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.01rem'" :group-list="true" :name="diseaseName[2]"
-                        :score="diseaseScore[2]" :group-list-score="getGroupScore('eent')" />
-                    <CardComponent class="w-20 pb-4" :group-list="true" :name="diseaseName[3]" :score="diseaseScore[3]"
+                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.3rem'" :group-list="true" 
+                        :name="diseaseName[1]"
+                        :score="diseaseScore[1]" 
+                        :group-list-score="getGroupScore('brain')" />
+                    <CardComponent class="w-20 pb-4" :padding-bottom="'0.01rem'" :group-list="true" 
+                        :name="diseaseName[2]"
+                        :score="diseaseScore[2]" 
+                        :group-list-score="getGroupScore('eent')" />
+                    <CardComponent class="w-20 pb-4" :group-list="true" 
+                        :name="diseaseName[3]" 
+                        :score="diseaseScore[3]"
                         :group-list-score="getGroupScore('cardiovascular')" />
-                    <CardComponent class="w-20" :padding-bottom="'5rem'" :group-list="true" :name="diseaseName[4]"
-                        :score="diseaseScore[4]" :group-list-score="getGroupScore('chest_abdo')" />
+                    <CardComponent class="w-20" :padding-bottom="'5rem'" :group-list="true" 
+                        :name="diseaseName[4]"
+                        :score="diseaseScore[4]" 
+                        :group-list-score="getGroupScore('chest_abdo')" />
                 </div>
                 <div class="basis-1/2 pl-1 pt-3">
                     <CardComponent class="w-20 pb-4" :padding-bottom="'15.5rem'" :group-list="true" :name="diseaseName[5]"

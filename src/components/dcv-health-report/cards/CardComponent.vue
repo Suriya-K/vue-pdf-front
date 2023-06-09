@@ -9,8 +9,7 @@
                     <div class="flex flex-row justify-center gap-12 pt-4">
                         <p class="font-notoSansThai text-gray-800 font-bold " v-html="name"></p>
                         <div class="relative ">
-                            <div :class="setColor()"
-                                class="flex w-full my-auto items-center justify-center py-1.5 px-5 rounded-lg">
+                            <div :class="setColor()" class="flex w-full my-auto items-center justify-center py-1.5 px-5 rounded-lg">
                                 <!-- score here -->
                                 <p class="font-notoSansThai text-white">{{ setScoreString(score) }}</p>
                             </div>
@@ -108,8 +107,8 @@ function setScoreString(score: number): string {
 function setColor(): string {
     const score = props.score
     let backgroundColor: string = '';
-    if (score > 1 && score <= 3) return backgroundColor = 'bg-dcv-low';
-    if (score > 4 && score <= 6) return backgroundColor = 'bg-dcv-med';
+    if (score >= 0 && score <= 3) return backgroundColor = 'bg-dcv-low';
+    if (score > 3 && score <= 6)  return backgroundColor = 'bg-dcv-med';
     if (score > 6 && score <= 10) return backgroundColor = 'bg-dcv-high';
     return backgroundColor;
 }

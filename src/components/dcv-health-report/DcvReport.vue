@@ -104,25 +104,29 @@ async function getSampleGroup() {
 function getGroupScoreByName() {
     const groupedData: Record<string, any[]> = {};
 
-    groupName.value.forEach((element: any) => {
-        if (element === undefined) return;
+    if (groupName.value && groupName.value.length > 0) {
+        groupName.value.forEach((element: any) => {
+            if (element === undefined) return;
 
-        const group = groupData.value[element.group];
-        if (!groupedData[element.group]) {
-            groupedData[element.group] = [];
-        }
+            const group = groupData.value[element.group];
+            if (!groupedData[element.group]) {
+                groupedData[element.group] = [];
+            }
 
-        let sum = 0;
-        group.forEach((sample: any) => {
-            sum += sample.disease_score;
+            let sum = 0;
+            group.forEach((sample: any) => {
+                sum += sample.disease_score;
+            });
+
+            const averageScore = sum / group.length;
+            groupedData[element.group].push({ name: element.name.replace('กลุ่มโรค', ''), score: averageScore });
         });
+    }
 
-        const averageScore = sum / group.length;
-        groupedData[element.group].push({ name: element.name.replace('กลุ่มโรค', ''), score: averageScore });
-    });
     console.log(groupedData);
-    return groupedData
+    return groupedData;
 }
+
 
 
 
