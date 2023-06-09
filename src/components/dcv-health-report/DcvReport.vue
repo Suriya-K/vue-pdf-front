@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto flex flex-col space-y-5" ref="dcvReport">
         <HealthRiskReport background="bg-dcv-hr-report" :sample-data-highest-score="getHighestScore()" />
-        <GroupHealthRisk background="bg-dcv-hr-group" />
+        <GroupHealthRisk background="bg-dcv-hr-group" :group-sample="groupData" />
         <div v-for="item in chunks">
             <HealthRiskRecommend :recommand-data="item" background="bg-dcv-hr-rec"></HealthRiskRecommend>
         </div>
@@ -21,6 +21,7 @@ const props = defineProps({
 
 // change type later
 const sampleData = ref<any>([]);
+const groupData = ref<any>([]);
 const chunks = ref<DcvHealthLists[][]>([])
 
 onBeforeMount(async () => {
@@ -30,8 +31,8 @@ onBeforeMount(async () => {
             return response.data
         })
     sampleData.value = extractAndGroupSample(sample);
+    groupData.value = await getSampleGroup();
     calculatedRecommendPage();
-    getGroupsScore();
 })
 
 function extractAndGroupSample(sample: any) {
@@ -55,15 +56,21 @@ function getHighestScore() {
     return topThree
 }
 
-function getGroupsScore() {
-    const groupedData = sampleData.value.reduce((result: any, obj: any) => {
-        const key = obj.group;
-        console.log(key);
-        result[key].push(obj)
+async function getSampleGroup() {
+    const groupedData = await sampleData.value.reduce((result: any, obj: any) => {
+        if (obj !== undefined) {
+            const key = obj.group;
+
+            if (!result[key]) result[key] = [];
+            result[key].push(obj);
+        }
         return result;
-    },{});
+    }, {});
     console.log(groupedData);
+    return groupedData;
 }
+
+
 
 
 function calculatedRecommendPage() {

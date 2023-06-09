@@ -73,7 +73,6 @@
 </template>
 <script setup lang="ts">
 const props = defineProps({
-    backgroundState: { type: String, required: true },
     name: { type: String, required: true, default: 'มะเร็งลำไส้ <br> (Colorectal cancer)' },
     score: { type: Number, required: true, default: 1.1 },
     intro: { type: String, required: true, default: 'มะเร็งลำไส้ใหญ่และทวารหนักเป็นมะเร็งพบบ่อยเป็นอันดับที่3ของคนไทยอาการมีได้ตั้งแต่การขับถ่ายผิดปกติถ่ายอุจจาระเป็นมูกเลือดหรือเป็นเลือดแดงสดจนถึงซีดเบื่ออาหารและน้ำหนักลดโดยไม่ทราบสาเหตุ' },
@@ -117,10 +116,6 @@ function setColor(): string {
 </script>
 
 <style scoped>
-.bg {
-    background-image: v-bind("props.backgroundState")
-}
-
 .padding-b {
     padding-bottom: v-bind("props.paddingBottom");
 }
