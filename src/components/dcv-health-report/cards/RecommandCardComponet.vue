@@ -1,19 +1,20 @@
 <template>
     <div class="flex flex-row flex-wrap pl-11 pt-1 h-full ">
-        <p class="font-notoSansThai font-bold text-black text-small_long pl-8 pt-1">{{ groupName }}</p>
-        <div class="grid grid-rows-[auto,1fr,auto] w-[44rem] pt-[0.3rem]">
+        <p class="font-notoSansThai text-gray-600 font-bold mr-auto pl-8 pt-1">{{ groupName }}</p>
+        <div class="grid grid-rows-[auto,1fr,auto] w-[44rem] pt-[0.3rem] pb-2">
             <!-- start here -->
             <div class="drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] ring-1 ring-gray-900/5 mx-auto rounded-lg w-full bg-white">
-                <div class="bg-red-600 w-full h-auto p-1 rounded-t-lg"></div>
-                <div class="pt-5 pl-2 shadow-xl ring-1 ring-gray-900/5 mx-auto  rounded-lg">
+                <div class="bg-dcv-high w-full h-auto p-1 rounded-t-lg"></div>
+                <div class="pt-5 pb-5 pl-2 shadow-xl ring-1 ring-gray-900/5 mx-auto  rounded-lg">
                     <div v-for="(item, index) in list">
                         <div class="grid grid-cols-10 w-auto">
-                            <p class="font-notoSansThai text-[10px] text-gray-600 text-justify  col-span-2 px-4 font-bold whitespace-pre-line"> {{ item.name.replace(" (","\n(") }} </p>
+                            <p class="font-notoSansThai text-[10px] text-gray-600 text-left col-span-2 px-4 font-bold whitespace-pre-line"> {{ item.name.replace(" (","\n(") }} </p>
                             <p class="font-notoSansThai text-[10px] text-gray-600 text-right  col-span-1 px-4">{{ setScoreString(item.score) }}</p>
-                            <p class="font-notoSansThai text-[10px] text-gray-600 text-justify  col-span-3 px-4">{{ item.checkup }}</p>
-                            <div class="font-notoSansThai text-[10px] text-gray-600 text-justify col-span-4 px-4 flex-col">
-                                <p class="">{{ item.risk_reduction }}</p>
-                                <p class="text-gray-600 font-bold">อาหารเสริมที่แนะนำ: </p>
+                            <p class="font-notoSansThai text-[10px] text-gray-600 text-left  col-span-3 px-4" v-if="item.checkup">{{ item.checkup }}</p>
+                            <p class="font-notoSansThai text-[10px] text-gray-600 text-left  col-span-3 px-4" v-if="!item.checkup">รับการตรวจตามปรกติ</p>
+                            <div class="font-notoSansThai text-[10px] text-gray-600 text-left col-span-4 pl-2 pr-7 flex-col whitespace-pre-line">
+                                <p class="">{{ item.risk_reduction.replace(" •","\n•")  }}</p>
+                                <p class="text-gray-600 font-bold" v-if="item.supplement">อาหารเสริมที่แนะนำ: </p>
                                 <!-- add new item -->
                                 <p class="">{{ item.supplement }}</p>
                             </div>

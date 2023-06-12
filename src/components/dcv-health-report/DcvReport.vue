@@ -126,7 +126,7 @@ function getGroupScoreByName() {
         });
     }
 
-    console.log(groupedData);
+    // console.log(groupedData);
     return groupedData;
 }
 
@@ -177,27 +177,75 @@ function transformGroupedDataToArray(groupedData: Record<string, any[]>): any[] 
             });
         }
     }
-
+    // console.log("trasefawdawweage");
+    // console.log(result);
     return result;
 }
 
 function calculatedRecommendPage() {
-    const chunkSize = 7;
+    const chunkSize = 6;
     const transformedArrayValue = transformedArray.value;
-    const chuckList:any[] = [];
+    // console.log("check");
+    // console.log(transformedArrayValue);
+    
+    var chuckList:any[] = [];
+    const pageList:any[] = [];
+
+    let counter = 0;
     // const chunks: DcvHealthLists[][] = [];
-    for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
-        const sliceChunks = transformedArrayValue.slice(i, i + chunkSize);
-        chuckList.push(sliceChunks);
-        // Perform further operations on the chunk as needed
+    for (let i = 0; i < transformedArrayValue.length; i += 1) {
+        const length = transformedArrayValue[i].data.length;
+        let last = 0;
+        let completeFlag = false
+        while (!completeFlag) {
+            if (counter+length-last < chunkSize) {
+                const slicedList = transformedArrayValue[i].data.slice(last, length);
+                chuckList.push({...transformedArrayValue[i],data: slicedList});
+                completeFlag = true
+                counter = (counter + length -last) % chunkSize
+            } else if (counter+length >= chunkSize ) {
+                const slicedList = transformedArrayValue[i].data.slice(0, chunkSize-counter);// = length-(counter+length-chunkSize)
+                chuckList.push({...transformedArrayValue[i],data: slicedList});
+                if (chunkSize-counter == length) {
+                    completeFlag = true
+                }
+                last = chunkSize-counter
+                counter = (counter + chunkSize-counter )%chunkSize
+            } 
+            // console.log("subchunki chunki chunky");
+            // console.log(chuckList);
+            if (counter == 0 ) {
+                pageList.push(chuckList)
+                chuckList = [];
+            }
+        }
     }
-    chunks.value = chuckList;
+    if (counter != 0) {
+            pageList.push(chuckList)
+            chuckList = [];
+        }
+    chunks.value = pageList;
+    console.log("chunki chunki chunky");
     console.log(chunks.value);
-    // for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
-    //     console.log(transformedArray.value[i]);
-    //     // const chunk = transformedArray[i].data[i].slice(i, i + chunkSize);
-    //     // chunks.value.push(chunk);
-    // }
+
+
+
+
+
+//     // const chunks: DcvHealthLists[][] = [];
+//     for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
+//         const sliceChunks = transformedArrayValue.slice(i, i + chunkSize);
+//         chuckList.push(sliceChunks);
+//         // Perform further operations on the chunk as needed
+//     }
+//     chunks.value = chuckList;
+//     console.log("chunki chunki chunky");
+//     console.log(chunks.value);
+//     // for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
+//     //     console.log(transformedArray.value[i]);
+//     //     // const chunk = transformedArray[i].data[i].slice(i, i + chunkSize);
+//     //     // chunks.value.push(chunk);
+//     // }
 }
 
 </script>
