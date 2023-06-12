@@ -42,17 +42,16 @@
   .nav-noprint {
     display: none;
   }
+
   .custom-page-size-a4 {
     background: white;
-    display: block !important;
-    width: 21cm;
+    display: inline-block !important;
+    height: calc(27.9cm - 1px) !important;
+    width: 21cm !important;
     margin: 0 !important;
-    height: 29.7cm;
     top: 0 !important;
-
   }
-  .pagebreak {
-    clear: both;
+  /* .pagebreak {
     page-break-before: always;
-  }
+  } */
 }

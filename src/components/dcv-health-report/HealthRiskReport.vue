@@ -4,7 +4,7 @@
             <div class="pl-14 pt-[5.1rem]">
                 <h1 class="font-notoSansThai text-small text-gray-600">{{sample_number}}</h1>
             </div>
-            <div class="flex flex-row flex-wrap pl-12 py-[9.6rem]">
+            <div class="flex flex-row flex-wrap pl-12 pt-[9.6rem]">
                 <div class="basis-1/2 pl-1 pt-[1.8rem]">
                     <div class="grid gap-[0.70rem]">
                         <SmallCardComponent 
@@ -57,7 +57,7 @@
                                 :line-no="7" />
                         </div>
                     </div>
-                    <div class="mt-[12.8rem] pl-2 pt-1 font-notoSansThai text-very_small text-gray-700 whitespace-pre-line">* คำนวณโดยใช้คะแนนจากดีเอ็นเอ (polygenic risk score) ร่วมกับ<br>ปัจจัยด้านความรุนแรงของโรค </div>
+                    <div class="pt-[12.8rem] pl-2 font-notoSansThai text-very_small text-gray-700 whitespace-pre-line">* คำนวณโดยใช้คะแนนจากดีเอ็นเอ (polygenic risk score) ร่วมกับ<br>ปัจจัยด้านความรุนแรงของโรค </div>
                 </div>
                 <div class="grid basis-1/2 gap-4 pl-1">
                     <div v-for="item in sampleDataHighestScore">
