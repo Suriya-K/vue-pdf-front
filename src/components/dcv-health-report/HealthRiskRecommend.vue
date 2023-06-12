@@ -1,6 +1,6 @@
 <template>
     <div class="custom-page-size-a4">
-        <div :class="['w-full h-full bg-no-repeat bg-cover m-0', background]">
+        <div :class="['w-full h-full bg-no-repeat bg-cover m-0 pt-[11.5rem]', background]">
             <div class="relative" v-for="(item) in data">
                 <RecommandCardComponet class="padd" :group-name="findGroupName(item.group)" :list="item.data"></RecommandCardComponet>
             </div>
