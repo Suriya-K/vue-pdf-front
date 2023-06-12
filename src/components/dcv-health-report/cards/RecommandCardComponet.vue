@@ -10,7 +10,7 @@
                         <div class="grid grid-cols-10 w-auto">
                             <p class="font-notoSansThai text-[10px] text-gray-600 text-left col-span-2 px-4 font-bold whitespace-pre-line"> {{ item.name.replace(" (","\n(") }} </p>
                             <p class="font-notoSansThai text-[10px] text-gray-600 text-right  col-span-1 px-4">{{ setScoreString(item.score) }}</p>
-                            <p class="font-notoSansThai text-[10px] text-gray-600 text-left  col-span-3 px-4" v-if="item.checkup">{{ item.checkup }}</p>
+                            <p class="font-notoSansThai text-[10px] text-gray-600 text-left  col-span-3 px-4 whitespace-pre-line" v-if="item.checkup">{{ item.checkup.replace(" •","\n•") }}</p>
                             <p class="font-notoSansThai text-[10px] text-gray-600 text-left  col-span-3 px-4" v-if="!item.checkup">รับการตรวจตามปรกติ</p>
                             <div class="font-notoSansThai text-[10px] text-gray-600 text-left col-span-4 pl-2 pr-7 flex-col whitespace-pre-line">
                                 <p class="">{{ item.risk_reduction.replace(" •","\n•")  }}</p>
