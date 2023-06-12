@@ -1,9 +1,16 @@
 <template>
     <div class="custom-page-size-a4">
-        <div :class="['w-full h-full bg-no-repeat bg-cover m-0 pt-[11.5rem]', background]">
+        <div :class="['w-full h-full bg-no-repeat bg-cover m-0 pt-[8em]', background]">
+            <div class="relative drop-shadow-[0_4px_4px_rgba(0,0,0,0.2)] 
+                ring-1 ring-gray-900/5 mx-auto rounded-lg w-[44rem] bg-dcv-high text-white font-notoSansThai font-semibold leading-4 grid grid-cols-10 py-2">
+                <p class="col-span-3 px-6 py-2">โรคที่เสี่ยง</p>
+                <p class="col-span-3 px-5">คำแนะนำ<br>การตรวจเพิ่มเติม</p>
+                <p class="col-span-4 px-3">คำแนะนำ<br>การดูแลสุขภาพ</p>
+            </div>
             <div class="relative" v-for="(item) in data">
                 <RecommandCardComponet class="padd" :group-name="findGroupName(item.group)" :list="item.data"></RecommandCardComponet>
             </div>
+            <p class="font-notoSansThai text-[10px] text-gray-500 ml-14 mt-1"><u class="text-gray-500">หมายเหตุ</u> หากมีข้อสงสัยเพิมเติม ควรปรึกษาทีมแพทย์ของ DNAcanvas เพื่อวางแผนสุขภาพที่ละเอียดมากขึ้น</p>
         </div>
     </div>
 </template>
@@ -16,6 +23,9 @@ const props = defineProps({
     background: { type: String },
     recommandData: { type: Array<[]> }
 })
+// console.log("testtttt")
+// console.log(props.recommandData)
+
 const groupName = ref([
     {
         group: 'brain',
@@ -31,7 +41,7 @@ const groupName = ref([
     },
     {
         group: 'chest_abdo',
-        name: 'กลุ่มโรคปอดและท้อง',
+        name: 'กลุ่มโรคปอดและช่องท้อง',
     },
     {
         group: 'infectious',
@@ -53,6 +63,7 @@ const groupName = ref([
 
 onUpdated(() => {
     data.value = props.recommandData;
+    console.log("DATA VALUE");
     console.log(data.value);
 })
 

@@ -59,7 +59,7 @@ const groupName = ref([
     },
     {
         group: 'chest_abdo',
-        name: 'กลุ่มโรคปอดและท้อง',
+        name: 'กลุ่มโรคปอดและช่องท้อง',
     },
     {
         group: 'infectious',
