@@ -23,6 +23,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import axios from 'axios';
 import { useRouter } from 'vue-router';
 // import axios from 'axios';
 
@@ -44,21 +45,21 @@ function onChange(event: any) {
 }
 
 async function onSubmit() {
-    // if (!file_data) return;
+    if (!file_data) return;
 
-    // const formData = new FormData();
+    const formData = new FormData();
 
-    // try {
-    //     formData.append('uploadData', file_data);
-    //     formData.append('selectedReport', this.selected_report);
-    //     await axios.post('http://localhost:3000/test/upload', formData, {
-    //         headers: {
-    //             'Content-Type': 'multipart/form-data'
-    //         }
-    //     })
-    // } catch (err) {
-    //     console.log(err);
-    // }    
+    try {
+        formData.append('csv', file_data);
+        formData.append('selectedReport', selected_report);
+        await axios.post('http://localhost:3333/dcv-upload', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    } catch (err) {
+        console.log(err);
+    }    
     // const routeData = this.$router.resolve({ name: this.selected_report });
     router.push({ name: selected_report });
 
