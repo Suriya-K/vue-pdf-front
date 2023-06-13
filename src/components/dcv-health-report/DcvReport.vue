@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto flex flex-col space-y-5" ref="dcvReport">
+    <div class="container mx-auto flex flex-col space-y-5 pb-6 print:space-y-0 print:pb-0 " ref="dcvReport">
         <HealthRiskReport :sample_number="sample_number" :group-score="getGroupScoreByName()" background="bg-dcv-hr-report"
             :sample-data-highest-score="getHighestScore()" />
         <GroupHealthRisk background="bg-dcv-hr-group" :group-sample="groupData" />

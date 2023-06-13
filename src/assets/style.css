@@ -38,6 +38,11 @@
   }
 }
 
+@page {
+  size: A4;
+  height: calc(27.9cm - 1px) !important;
+}
+
 @media print {
   .nav-noprint {
     display: none;
@@ -46,8 +51,8 @@
   .custom-page-size-a4 {
     background: white;
     display: inline-block !important;
-    height: calc(27.9cm - 1px) !important;
-    width: 21cm !important;
+    /* height: calc(27.9cm - 1px) !important; */
+    /* width: auto !important; */
     margin: 0 !important;
     top: 0 !important;
   }
