@@ -73,10 +73,6 @@ const groupName = ref([
         group: 'urogenital',
         name: 'กลุ่มโรคทางเดินปัสสาวะและสืบพันธ์ุ',
     },
-    {
-        group: 'joint',
-        name: 'กลุ่มโรคข้อต่อ',
-    },
 ])
 
 function getGroupScore(name: string): any[] {
