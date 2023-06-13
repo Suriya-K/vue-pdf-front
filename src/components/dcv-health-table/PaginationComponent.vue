@@ -1,29 +1,32 @@
 <template>
-    <div class="w-96 ml-52">
-        <table class="table">
-            <!-- head -->
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Sample Number</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(item, index) in displayedItems" :key="index" :item="item">
-                    <th>{{ index + 1 }}</th>
-                    <th>{{ item }}</th>
-                    <th>
-                        <button class="btn btn-outline btn-success btn-sm mr-2" @click="viewReport(item.toString())">View</button>
-                        <button class="btn btn-outline btn-warning btn-sm">Print PDF</button>
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" :class="['btn btn-sm mr-0.1', { isActive: page === currentPage }]" v-for="page in pages"
-            :key="page" @click="changePage(page)">
-            {{ page }}
-        </button>
+    <div class="container mx-auto">
+        <div class="w-96 m-auto">
+            <table class="table">
+                <!-- head -->
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Sample Number</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in displayedItems" :key="index" :item="item">
+                        <th>{{ index + 1 }}</th>
+                        <th>{{ item }}</th>
+                        <th>
+                            <button class="btn btn-outline btn-success btn-sm mr-2"
+                                @click="viewReport(item.toString())">View</button>
+                            <!-- <button class="btn btn-outline btn-warning btn-sm">Print PDF</button> -->
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]" v-for="page in pages"
+                :key="page" @click="changePage(page)">
+                {{ page }}
+            </button>
+        </div>
     </div>
 </template>
 

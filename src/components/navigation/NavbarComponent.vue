@@ -10,7 +10,7 @@
             </button>
         </div>
         <div class="flex-1">
-            <a class="normal-case text-xl">Genforsis PDF Generator</a>
+            <a class="normal-case text-xl  hover:text-cyan-500" href="/">Genforsis PDF Generator</a>
         </div>
     </div>
 </template>

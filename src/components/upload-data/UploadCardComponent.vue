@@ -1,20 +1,25 @@
 <template>
-    <div class="card w-96 glass m-auto">
+    <div class="card w-96 bg-slate-900 m-auto">
         <div class="card-body">
-            <h2 class="card-title">Upload File Here</h2>
+            <h2 class="card-title text-white">Upload File Here</h2>
             <div class="form-control w-full max-w-xs">
                 <label class="label">
-                    <span class="label-text">Pick a file</span>
+                    <span class="label-text text-white">Pick a file</span>
                 </label>
-                <input type="file" class="file-input file-input-bordered w-full max-w-xs" @change="onChange($event)" />
+                <input type="file" class="file-input file-input-bordered w-full max-w-xs text-white"
+                    @change="onChange($event)" />
+                <span class="text-red-600 font-bold" v-if="!file_data && isEmpty">file cannot be empty</span>
                 <label class="label">
-                    <span class="label-text">Report : </span>
+                    <span class="label-text text-white">Report : </span>
                 </label>
-                <select class="select select-bordered w-full max-w-xs" v-model="selected_report" :required="true">
-                    <option v-for="option in report_type" :value="option.value" :disabled="option.disabled">
+                <select class="select select-bordered w-full max-w-xs text-white" v-model="selected_report"
+                    :required="true">
+                    <option class="text-white" v-for="option in report_type" :value="option.value"
+                        :disabled="option.disabled">
                         {{ option.text }}
                     </option>
                 </select>
+                <span class="text-red-600 font-bold" v-if="!selected_report && isEmpty">please select report type</span>
                 <div class="card-actions pt-4">
                     <button class="btn btn-primary m-auto" @click="onSubmit">Generate PDF</button>
                 </div>
@@ -24,6 +29,7 @@
 </template>
 <script setup lang="ts">
 import axios from 'axios';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 // import axios from 'axios';
 
@@ -33,6 +39,7 @@ const router = useRouter();
 // @ts-ignore
 let file_data: any;
 let selected_report: string = '';
+let isEmpty = ref(false);
 
 const report_type = [
     { text: "Report Type", value: "", disabled: true },
@@ -45,7 +52,11 @@ function onChange(event: any) {
 }
 
 async function onSubmit() {
-    if (!file_data) return;
+    if (!file_data) {
+        isEmpty.value = true;
+        console.log(isEmpty.value)
+        return
+    }
 
     const formData = new FormData();
 
@@ -59,7 +70,7 @@ async function onSubmit() {
         })
     } catch (err) {
         console.log(err);
-    }    
+    }
     // const routeData = this.$router.resolve({ name: this.selected_report });
     router.push({ name: selected_report });
 
