@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref, watch } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import GroupHealthRisk from './GroupHealthRisk.vue';
 import HealthRiskRecommend from './HealthRiskRecommend.vue';
 import HealthRiskReport from './HealthRiskReport.vue';

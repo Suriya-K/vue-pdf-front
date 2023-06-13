@@ -14,7 +14,7 @@
                     <th>{{ index + 1 }}</th>
                     <th>{{ item }}</th>
                     <th>
-                        <button class="btn btn-outline btn-success btn-sm mr-2" @click="viewReport(item)">View</button>
+                        <button class="btn btn-outline btn-success btn-sm mr-2" @click="viewReport(item.toString())">View</button>
                         <button class="btn btn-outline btn-warning btn-sm">Print PDF</button>
                     </th>
                 </tr>
@@ -28,7 +28,7 @@
 </template>
 
 <script  lang="ts">
-import { ref, computed, watch, toRaw } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 export default {
     props: {
@@ -43,7 +43,6 @@ export default {
     },
     methods: {
         viewReport(reportNumber: string) {
-            console.log(reportNumber);
             const routeData = this.$router.resolve({ name: 'dcv_report', params: { sample_number: reportNumber } });
             window.open(routeData.href, '_blank');
         }
