@@ -3,14 +3,15 @@
         <HealthRiskReport :sample_number="sample_number" :group-score="getGroupScoreByName()" background="bg-dcv-hr-report"
             :sample-data-highest-score="getHighestScore()" />
         <GroupHealthRisk background="bg-dcv-hr-group" :group-sample="groupData" />
-        <div v-for="item in chunks">
-            <HealthRiskRecommend :recommand-data="item" background="bg-dcv-hr-rec"></HealthRiskRecommend>
+        <div v-for="(item, index) in chunks">
+            <HealthRiskRecommend :pageNumber="pageNumber + index" :recommand-data="item" background="bg-dcv-hr-rec">
+            </HealthRiskRecommend>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount, ref, watch } from 'vue';
 import GroupHealthRisk from './GroupHealthRisk.vue';
 import HealthRiskRecommend from './HealthRiskRecommend.vue';
 import HealthRiskReport from './HealthRiskReport.vue';
@@ -24,7 +25,8 @@ const props = defineProps({
 const sampleData = ref<any>([]);
 const groupData = ref<any>([]);
 const transformedArray = ref<any>([]);
-const chunks = ref<any>([])
+const chunks = ref<any>([]);
+const pageNumber: number = 3;
 
 const groupName = ref([
     {
@@ -149,7 +151,7 @@ function getGroupScoreGreatherThanSix() {
                         score: sample.disease_score,
                         checkup: sample.checkup,
                         risk_reduction: sample.risk_reduction,
-                        supplement : sample.supplement
+                        supplement: sample.supplement
                     });
                 }
             });
@@ -187,9 +189,9 @@ function calculatedRecommendPage() {
     const transformedArrayValue = transformedArray.value;
     // console.log("check");
     // console.log(transformedArrayValue);
-    
-    var chuckList:any[] = [];
-    const pageList:any[] = [];
+
+    var chuckList: any[] = [];
+    const pageList: any[] = [];
 
     let counter = 0;
     // const chunks: DcvHealthLists[][] = [];
@@ -198,32 +200,32 @@ function calculatedRecommendPage() {
         let last = 0;
         let completeFlag = false
         while (!completeFlag) {
-            if (counter+length-last < chunkSize) {
+            if (counter + length - last < chunkSize) {
                 const slicedList = transformedArrayValue[i].data.slice(last, length);
-                chuckList.push({...transformedArrayValue[i],data: slicedList});
+                chuckList.push({ ...transformedArrayValue[i], data: slicedList });
                 completeFlag = true
-                counter = (counter + length -last) % chunkSize
-            } else if (counter+length >= chunkSize ) {
-                const slicedList = transformedArrayValue[i].data.slice(0, chunkSize-counter);// = length-(counter+length-chunkSize)
-                chuckList.push({...transformedArrayValue[i],data: slicedList});
-                if (chunkSize-counter == length) {
+                counter = (counter + length - last) % chunkSize
+            } else if (counter + length >= chunkSize) {
+                const slicedList = transformedArrayValue[i].data.slice(0, chunkSize - counter);// = length-(counter+length-chunkSize)
+                chuckList.push({ ...transformedArrayValue[i], data: slicedList });
+                if (chunkSize - counter == length) {
                     completeFlag = true
                 }
-                last = chunkSize-counter
-                counter = (counter + chunkSize-counter )%chunkSize
-            } 
+                last = chunkSize - counter
+                counter = (counter + chunkSize - counter) % chunkSize
+            }
             // console.log("subchunki chunki chunky");
             // console.log(chuckList);
-            if (counter == 0 ) {
+            if (counter == 0) {
                 pageList.push(chuckList)
                 chuckList = [];
             }
         }
     }
     if (counter != 0) {
-            pageList.push(chuckList)
-            chuckList = [];
-        }
+        pageList.push(chuckList)
+        chuckList = [];
+    }
     chunks.value = pageList;
     console.log("chunki chunki chunky");
     console.log(chunks.value);
@@ -232,20 +234,20 @@ function calculatedRecommendPage() {
 
 
 
-//     // const chunks: DcvHealthLists[][] = [];
-//     for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
-//         const sliceChunks = transformedArrayValue.slice(i, i + chunkSize);
-//         chuckList.push(sliceChunks);
-//         // Perform further operations on the chunk as needed
-//     }
-//     chunks.value = chuckList;
-//     console.log("chunki chunki chunky");
-//     console.log(chunks.value);
-//     // for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
-//     //     console.log(transformedArray.value[i]);
-//     //     // const chunk = transformedArray[i].data[i].slice(i, i + chunkSize);
-//     //     // chunks.value.push(chunk);
-//     // }
+    //     // const chunks: DcvHealthLists[][] = [];
+    //     for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
+    //         const sliceChunks = transformedArrayValue.slice(i, i + chunkSize);
+    //         chuckList.push(sliceChunks);
+    //         // Perform further operations on the chunk as needed
+    //     }
+    //     chunks.value = chuckList;
+    //     console.log("chunki chunki chunky");
+    //     console.log(chunks.value);
+    //     // for (let i = 0; i < transformedArrayValue.length; i += chunkSize) {
+    //     //     console.log(transformedArray.value[i]);
+    //     //     // const chunk = transformedArray[i].data[i].slice(i, i + chunkSize);
+    //     //     // chunks.value.push(chunk);
+    //     // }
 }
 
 </script>
