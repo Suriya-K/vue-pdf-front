@@ -35,7 +35,7 @@ export const options = {
       ticks: {
         stepSize: 1,
         z: 1,
-        callback: (value: any, tick: any, values: any) => {
+        callback: (value: any) => {
           if(value === 1) {return 'L'};
           if(value === 2) {return 'M'};
           if(value === 3) {return 'H'};

@@ -25,7 +25,6 @@ const usage_code = {
 
 var recommen_reference: any = [];
 var info_reference: any = [];
-var input_data: any = [];
 var extract_data: any = {
     vit_a: "",
     vit_c: "",
@@ -119,22 +118,6 @@ export default {
                 }
             });
         },
-        async loadData() {
-            console.log("Assign" + this.reportType);
-            // const data_tsv = await d3.tsv('/sample_input.tsv');
-            for await (const data of data_tsv) {
-                input_data.push(data);
-
-            }
-            input_data.forEach((data: any) => {
-                if (usage_code[data.code] in extract_data) {
-                    extract_data[usage_code[data.code]] = data["interpret.3scale"];
-                    // SK020 finasteride & dutasteride use same value
-                    extract_data['dutasteride'] = extract_data['finasteride'];
-                }
-            });
-
-        },
         async loadInfoReference() {
             const info_tsv = await d3.tsv('/info_reference.tsv');
             for await (const element of info_tsv) {
@@ -147,7 +130,6 @@ export default {
             });
         },
         async assignReference(): Promise<void> {
-            await this.loadData();
             await this.loadRecommandReference();
             await this.loadInfoReference();
             //data["interpret.3scale"]

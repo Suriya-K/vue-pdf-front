@@ -79,13 +79,6 @@ const props = defineProps({
     sampleDataHighestScore: { type: Array<DcvHealth>, required: true },
     groupScore: <any>Object
 });
-// console.log(props.sampleDataHighestScore)
-const cardState = {
-    high: '/src/assets/img/dcv-report/large-box/large-box-high.png',
-    med: '/src/assets/img/dcv-report/large-box/large-box-med.png',
-    low: '/src/assets/img/dcv-report/large-box/large-box-low.png',
-
-}
 const smallCardState = {
     high: '/src/assets/img/dcv-report/small-box/small-box-high.png',
     med: '/src/assets/img/dcv-report/small-box/small-box-med.png',

@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onUpdated, ref } from 'vue';
+import { ref } from 'vue';
 import CardComponent from './cards/CardComponent.vue';
 const props = defineProps({
     background: { type: String },

@@ -26,7 +26,7 @@
                 <p class="font-cloud_light text-head text-cyan-700">
                     ความเสี่ยงโรคและความผิดปกติที่เกี่ยวข้องกับอาการผมบางศีรษะล้าน</p>
                 <div class="relative flex flex-row pr-20">
-                    <Radar class="w-full h-56" :data="dataConfig.data" :options="dataConfig.options" />
+                    <!-- <Radar class="w-full h-56" :data="dataConfig.data" :options="dataConfig.options" /> -->
                     <div class="box-border flex flex-col w-full">
                         <p class="font-montserrat_bold">Risk:</p>
                         <p class="font-montserrat_bold">H = High</p>
