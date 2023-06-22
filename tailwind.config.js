@@ -12,14 +12,14 @@ export default {
         'dcv-high':'#B75A4D'
       },
       backgroundImage: {
-        "sum": "url('/src/assets/img/page_bg/summ.jpg')",
-        "rec-nutrient": "url('/src/assets/img/page_bg/recom_nutrient.jpg')",
-        "rec-disease": "url('/src/assets/img/page_bg/recom_disease.jpg')",
+        "sum": "url('/assets/img/page_bg/summ.jpg')",
+        "rec-nutrient": "url('/assets/img/page_bg/recom_nutrient.jpg')",
+        "rec-disease": "url('/assets/img/page_bg/recom_disease.jpg')",
 
         // MUST REPLACE WITH REAL BACKGROUND
-        "dcv-hr-report": "url('/src/assets/img/dcv-template/health-risk.png')",
-        "dcv-hr-rec": "url('/src/assets/img/dcv-template/health-risk-recommand.png')",
-        "dcv-hr-group": "url('/src/assets/img/dcv-template/health-risk-group.png')",
+        "dcv-hr-report": "url('/assets/img/dcv-template/health-risk.png')",
+        "dcv-hr-rec": "url('/assets/img/dcv-template/health-risk-recommand.png')",
+        "dcv-hr-group": "url('/assets/img/dcv-template/health-risk-group.png')",
       },
     },
     fontFamily: {

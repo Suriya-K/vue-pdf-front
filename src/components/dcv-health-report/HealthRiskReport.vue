@@ -80,14 +80,14 @@ const props = defineProps({
     groupScore: <any>Object
 });
 const smallCardState = {
-    high: '/src/assets/img/dcv-report/small-box/small-box-high.png',
-    med: '/src/assets/img/dcv-report/small-box/small-box-med.png',
-    low: '/src/assets/img/dcv-report/small-box/small-box-low.png'
+    high: '/assets/img/dcv-report/small-box/small-box-high.png',
+    med: '/assets/img/dcv-report/small-box/small-box-med.png',
+    low: '/assets/img/dcv-report/small-box/small-box-low.png'
 }
 const lineState = {
-    high: '/src/assets/img/dcv-report/line/lineX_high.png',
-    med: '/src/assets/img/dcv-report/line/lineX_med.png',
-    low: '/src/assets/img/dcv-report/line/lineX_low.png'
+    high: '/assets/img/dcv-report/line/lineX_high.png',
+    med: '/assets/img/dcv-report/line/lineX_med.png',
+    low: '/assets/img/dcv-report/line/lineX_low.png'
 }
 
 function setLineColor(name: any): string {

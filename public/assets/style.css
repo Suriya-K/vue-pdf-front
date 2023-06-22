@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-page-size-a4 {
+  background: white;
+  display: block;
+  width: 21cm;
+  margin: auto;
+  height: 29.7cm;
+}
+
+.page_no {
+  position: relative;
+}
+.number {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+@layer base {
+  @font-face {
+    font-family: "Montserrat-Regular";
+    src: url("./font/Montserrat-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Montserrat-Light";
+    src: url("./font/Montserrat-Light.ttf");
+  }
+  @font-face {
+    font-family: "Montserrat-Bold";
+    src: url("./font/Montserrat-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Cloud-Bold";
+    src: url("./font/Cloud-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Cloud-Light";
+    src: url("./font/Cloud-Light.ttf");
+  }
+
+  @font-face {
+    font-family: "NotoSansThai-VariableFont";
+    src: url("./fonts/NotoSansThai-VariableFont.ttf");
+  }
+}
+
+@page {
+  size: A4;
+  height: calc(27.9cm - 1px) !important;
+}
+
+@media print {
+  .nav-noprint {
+    display: none;
+  }
+
+  .custom-page-size-a4 {
+    background: white;
+    display: inline-block !important;
+    /* height: calc(27.9cm - 1px) !important; */
+    /* width: auto !important; */
+    margin: 0 !important;
+    top: 0 !important;
+  }
+  /* .pagebreak {
+    page-break-before: always;
+  } */
+}
