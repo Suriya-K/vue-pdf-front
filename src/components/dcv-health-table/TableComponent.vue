@@ -10,7 +10,7 @@ import PaginationComponent from './PaginationComponent.vue';
 let data = ref(<any>[]);
 
 async function getDcvLists() {
-    const data = await axios.get("http://localhost:3333/dcv-get")
+    const data = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv-get")
         .then(response => {
             return response.data
         })

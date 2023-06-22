@@ -61,7 +61,7 @@ const groupName = ref([
 
 onBeforeMount(async () => {
     if (!props.sample_number) return
-    const sample = await axios.get("http://localhost:3333/dcv-get/" + props.sample_number)
+    const sample = await axios.get(import.meta.env.VITE_PDF_SERVICE+"dcv-get/" + props.sample_number)
         .then(response => {
             return response.data
         })

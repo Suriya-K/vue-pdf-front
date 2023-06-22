@@ -63,17 +63,16 @@ async function onSubmit() {
     try {
         formData.append('csv', file_data);
         formData.append('selectedReport', selected_report);
-        await axios.post('http://localhost:3333/dcv-upload', formData, {
+        await axios.post(import.meta.env.VITE_PDF_SERVICE+'dcv-upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
+        router.push({ name: selected_report });
     } catch (err) {
         console.log(err);
     }
     // const routeData = this.$router.resolve({ name: this.selected_report });
-    router.push({ name: selected_report });
-
     // window.open(routeData.href, '_blank');
 }
 </script>
