@@ -45,20 +45,20 @@
                     <div class="border-box pb-52">
                         <div class="flex flex-col pl-20 pt-4">
                             <div class="w-40 h-40">
-                                <img src="/src/assets/img/rect_long_name.png">
+                                <img src="/assets/img/rect_long_name.png">
                             </div>
                             <div class="w-40 h-1">
-                                <img src="/src/assets/img/rect_short_low.png">
+                                <img src="/assets/img/rect_short_low.png">
                             </div>
                         </div>
                     </div>
                     <div class="border-box">
                         <div class="flex flex-col pl-20 pt-4">
                             <div class="w-40 h-40">
-                                <img src="/src/assets/img/rect_long_name.png">
+                                <img src="/assets/img/rect_long_name.png">
                             </div>
                             <div class="w-40 h-1">
-                                <img src="/src/assets/img/rect_short_low.png">
+                                <img src="/assets/img/rect_short_low.png">
                             </div>
                         </div>
                     </div>
@@ -132,8 +132,8 @@ export default {
             }
         },
         setVitaminNeedImage(value: string): string {
-            const low: string = "/src/assets/img/recom_low.png"
-            const high: string = "/src/assets/img/recom_medhigh.png"
+            const low: string = "/assets/img/recom_low.png"
+            const high: string = "/assets/img/recom_medhigh.png"
             if (value === 'low') return low;
             if (value === 'high' || value === 'med') return high;
             return '';

@@ -159,18 +159,18 @@ export default {
             return (capitalizedFirst + rest).replace(/[\_]/gm, '-');;
         },
         setVitaminNeedImage(value: string): string {
-            const high: string = "/src/assets/img/scale3.gif";
-            const medium: string = "/src/assets/img/scale2.gif";
-            const low: string = "/src/assets/img/scale1.gif";
+            const high: string = "/assets/img/scale3.gif";
+            const medium: string = "/assets/img/scale2.gif";
+            const low: string = "/assets/img/scale1.gif";
             if (value === "high") return high;
             if (value === "med") return medium;
             if (value === "low") return low;
             return '';
         },
         setresponseToMedicineImage(value: string): string {
-            const low: string = "/src/assets/img/scaledot/scalehigh.jpg";
-            const med: string = "/src/assets/img/scaledot/scalemed.jpg";
-            const normal: string = "/src/assets/img/scaledot/scalelow.jpg";
+            const low: string = "/assets/img/scaledot/scalehigh.jpg";
+            const med: string = "/assets/img/scaledot/scalemed.jpg";
+            const normal: string = "/assets/img/scaledot/scalelow.jpg";
             if (value === "high") return low;
             if (value === "med") return med;
             if (value === "low") return normal;
