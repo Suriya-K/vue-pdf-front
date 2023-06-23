@@ -22,28 +22,28 @@
 @layer base {
   @font-face {
     font-family: "Montserrat-Regular";
-    src: url("./font/Montserrat-Regular.ttf");
+    src: url("/assets/fonts/Montserrat-Regular.ttf");
   }
   @font-face {
     font-family: "Montserrat-Light";
-    src: url("./font/Montserrat-Light.ttf");
+    src: url("/assets/fonts/Montserrat-Light.ttf");
   }
   @font-face {
     font-family: "Montserrat-Bold";
-    src: url("./font/Montserrat-Bold.ttf");
+    src: url("/assets/fonts/Montserrat-Bold.ttf");
   }
   @font-face {
     font-family: "Cloud-Bold";
-    src: url("./font/Cloud-Bold.ttf");
+    src: url("/assets/fonts/Cloud-Bold.ttf");
   }
   @font-face {
     font-family: "Cloud-Light";
-    src: url("./font/Cloud-Light.ttf");
+    src: url("/assets/fonts/Cloud-Light.ttf");
   }
 
   @font-face {
     font-family: "NotoSansThai-VariableFont";
-    src: url("./fonts/NotoSansThai-VariableFont.ttf");
+    src: url("/assets/fonts/NotoSansThai-VariableFont.ttf");
   }
 }
 
