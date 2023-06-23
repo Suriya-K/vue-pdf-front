@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { onUpdated, ref } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import RecommandCardComponet from './cards/RecommandCardComponet.vue';
 const data = ref<any>([]);
 const props = defineProps({
@@ -64,7 +64,7 @@ const groupName = ref([
     },
 ])
 
-onUpdated(() => {
+onBeforeMount(() => {
     data.value = props.recommandData;
     console.log("DATA VALUE");
     console.log(data.value);
