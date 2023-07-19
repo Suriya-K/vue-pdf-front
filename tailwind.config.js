@@ -15,6 +15,7 @@ export default {
         "sport-header": "#5C4032",
         "sport-topic": "#FF8439",
         "sport-sub-topic": "#FF914D",
+        "sport-box": "#F9EFE3",
       },
       backgroundImage: {
         sum: "url('/assets/img/page_bg/summ.jpg')",
