@@ -12,7 +12,7 @@ let data = ref(<any>[]);
 async function getDcvLists() {
     const data = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv/healths/get/lists", { withCredentials: true })
         .then(response => {
-            console.log(response.data[0])
+            console.log('get lists',response.data)
             return response.data
         })
     return data;
