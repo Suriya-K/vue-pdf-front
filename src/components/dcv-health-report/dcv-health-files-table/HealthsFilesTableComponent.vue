@@ -10,8 +10,9 @@ import PaginationComponent from './PaginationComponent.vue';
 let data = ref(<any>[]);
 
 async function getDcvLists() {
-    const data = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv-get")
+    const data = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv/healths/get/lists", { withCredentials: true })
         .then(response => {
+            console.log('get lists',response.data)
             return response.data
         })
     return data;
@@ -19,10 +20,13 @@ async function getDcvLists() {
 
 onBeforeMount(async () => {
     let dcvLists = await getDcvLists();
-    let dcvArray = [];
-    for (let key in dcvLists.data) {
-        dcvArray.push(key);
+    let dcvArray: any = [];
+    for (let i = 0; i < dcvLists.length; i++) {
+        console.log(dcvLists[i])
     }
+    // for (let key in dcvLists) {
+    //     dcvArray.push(key.name);
+    // }
     data.value = dcvArray;
 })
 

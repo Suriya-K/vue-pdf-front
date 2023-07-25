@@ -6,7 +6,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Sample Number</th>
+                        <th class="text-center">Files Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -16,14 +16,14 @@
                         <th>{{ item }}</th>
                         <th>
                             <button class="btn btn-outline btn-success btn-sm mr-2"
-                                @click="viewReport(item.toString())">View</button>
+                                @click="openReportFile(item.toString())">View</button>
                             <!-- <button class="btn btn-outline btn-warning btn-sm">Print PDF</button> -->
                         </th>
                     </tr>
                 </tbody>
             </table>
-            <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]" v-for="page in pages"
-                :key="page" @click="changePage(page)">
+            <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]"
+                v-for="page in pages" :key="page" @click="changePage(page)">
                 {{ page }}
             </button>
         </div>
@@ -36,7 +36,7 @@ import { ref, computed, watch } from 'vue';
 export default {
     props: {
         items: {
-            type: Array<String>,
+            type: Array<string>,
             required: true
         },
         itemsPerPage: {
@@ -45,9 +45,8 @@ export default {
         },
     },
     methods: {
-        viewReport(reportNumber: string) {
-            const routeData = this.$router.resolve({ name: 'dcv_report', params: { sample_number: reportNumber } });
-            window.open(routeData.href, '_blank');
+        openReportFile(report_id: string) {
+            this.$router.resolve({ name: 'dcv_healths_table', params: { id: report_id } });
         }
     },
     setup(props) {
