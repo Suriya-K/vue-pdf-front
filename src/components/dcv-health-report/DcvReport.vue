@@ -18,6 +18,7 @@ import HealthRiskReport from './HealthRiskReport.vue';
 import axios from 'axios';
 
 const props = defineProps({
+    id: { type: String, required: true },
     sample_number: { type: String, required: true }
 })
 
@@ -61,8 +62,9 @@ const groupName = ref([
 
 onBeforeMount(async () => {
     if (!props.sample_number) return
-    const sample = await axios.get(import.meta.env.VITE_PDF_SERVICE+"dcv-get/" + props.sample_number)
+    const sample = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv/healths/get/" + props.sample_number + '/' + props.id, { withCredentials: true })
         .then(response => {
+            console.log(response.data)
             return response.data
         })
     sampleData.value = extractAndGroupSample(sample);

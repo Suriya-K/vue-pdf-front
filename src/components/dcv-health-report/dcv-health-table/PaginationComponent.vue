@@ -1,6 +1,6 @@
 <template>
-    <div class="container mx-auto">
-        <div class="w-96 m-auto">
+    <div class="container">
+        <div class="grid place-items-center">
             <table class="table">
                 <!-- head -->
                 <thead>
@@ -17,13 +17,13 @@
                         <th>
                             <button class="btn btn-outline btn-success btn-sm mr-2"
                                 @click="openReportFile(item.toString())">View</button>
-                            <!-- <button class="btn btn-outline btn-warning btn-sm">Print PDF</button> -->
+                            <button class="btn btn-outline btn-warning btn-sm">Print PDF</button>
                         </th>
                     </tr>
                 </tbody>
             </table>
-            <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]" v-for="page in pages"
-                :key="page" @click="changePage(page)">
+            <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]"
+                v-for="page in pages" :key="page" @click="changePage(page)">
                 {{ page }}
             </button>
         </div>
@@ -36,17 +36,21 @@ import { ref, computed, watch } from 'vue';
 export default {
     props: {
         items: {
-            type: Array<String>,
+            type: Array<any>,
             required: true
         },
         itemsPerPage: {
             type: Number,
             default: 10
         },
+        id: {
+            type: String,
+            required: true
+        }
     },
     methods: {
         openReportFile(reportNumber: string) {
-            const routeData = this.$router.resolve({ name: 'dcv_report', params: { sample_number: reportNumber } });
+            const routeData = this.$router.resolve({ name: 'dcv_report', params: { id: this.$props.id, sample_number: reportNumber } });
             window.open(routeData.href, '_blank');
         }
     },

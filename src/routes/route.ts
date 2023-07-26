@@ -3,6 +3,7 @@ import Home from "../components/generate-report/Home.vue";
 import PageViewComponent from "../components/test-report/PageViewComponent.vue";
 import DcvReportVue from "../components/dcv-health-report/DcvReport.vue";
 import HealthsFilesTableComponent from "../components/dcv-health-report/dcv-health-files-table/HealthsFilesTableComponent.vue";
+import HealthsTableComponent from "../components/dcv-health-report/dcv-health-table/HealthsTableComponent.vue";
 import DcvSportReport from "../components/dcv-sport-report/DcvSportReport.vue";
 
 const router = createRouter({
@@ -16,7 +17,7 @@ const router = createRouter({
       props: true,
     },
     {
-      path: "/dcv_report/:sample_number",
+      path: "/dcv_report/:sample_number/:id",
       name: "dcv_report",
       component: DcvReportVue,
       props: true,
@@ -28,9 +29,9 @@ const router = createRouter({
       props: true,
     },
     {
-      path: "/dcv_healths_table",
+      path: "/dcv_healths_table/:id",
       name: "dcv_healths_table",
-      component: HealthsFilesTableComponent,
+      component: HealthsTableComponent,
       props: true,
     },
     {

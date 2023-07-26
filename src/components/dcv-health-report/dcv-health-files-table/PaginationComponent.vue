@@ -1,6 +1,6 @@
 <template>
-    <div class="container mx-auto">
-        <div class="w-96 m-auto">
+    <div class="container">
+        <div class="grid place-items-center">
             <table class="table">
                 <!-- head -->
                 <thead>
@@ -13,10 +13,10 @@
                 <tbody>
                     <tr v-for="(item, index) in displayedItems" :key="index" :item="item">
                         <th>{{ index + 1 }}</th>
-                        <th>{{ item }}</th>
+                        <th>{{ item.name }}</th>
                         <th>
                             <button class="btn btn-outline btn-success btn-sm mr-2"
-                                @click="openReportFile(item.toString())">View</button>
+                                @click="openReportTable(item.id)">View</button>
                             <!-- <button class="btn btn-outline btn-warning btn-sm">Print PDF</button> -->
                         </th>
                     </tr>
@@ -36,7 +36,7 @@ import { ref, computed, watch } from 'vue';
 export default {
     props: {
         items: {
-            type: Array<string>,
+            type: Array<any>,
             required: true
         },
         itemsPerPage: {
@@ -45,8 +45,8 @@ export default {
         },
     },
     methods: {
-        openReportFile(report_id: string) {
-            this.$router.resolve({ name: 'dcv_healths_table', params: { id: report_id } });
+        openReportTable(report_id: string) {
+            this.$router.push({ name: 'dcv_healths_table', params: { id: report_id } });
         }
     },
     setup(props) {

@@ -26,6 +26,16 @@
             </div>
         </div>
     </div>
+    <div class="card w-80 mx-auto pt-10 pb-20">
+        <h1 class="text-white pb-4">Quick Access Report Table</h1>
+        <div class="flex flex-col gap-4">
+            <button class="btn btn-accent" value="dcv_healths_file_table" @click="openTable($event)">Dcv Healths
+                Reports</button>
+            <button class="btn btn-accent" disabled>Dcv Sports Reports</button>
+            <button class="btn btn-accent" disabled>Corporates Reports</button>
+            <button class="btn btn-error">DEBUG GOOGLE AUTHENTICATION</button>
+        </div>
+    </div>
 </template>
 <script setup lang="ts">
 import axios from 'axios';
@@ -51,6 +61,10 @@ function onChange(event: any) {
     file_data = event.target.files[0];
 }
 
+function openTable(event: any) {
+    router.push({ name: event.target.value })
+}
+
 async function onSubmit() {
     if (!file_data) {
         isEmpty.value = true;
@@ -63,7 +77,7 @@ async function onSubmit() {
     try {
         formData.append('csv', file_data);
         formData.append('selectedReport', selected_report);
-        await axios.post(import.meta.env.VITE_PDF_SERVICE+'dcv-upload', formData, {
+        await axios.post(import.meta.env.VITE_PDF_SERVICE + 'dcv-upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
