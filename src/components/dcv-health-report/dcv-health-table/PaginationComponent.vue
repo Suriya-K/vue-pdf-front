@@ -17,7 +17,8 @@
                         <th>
                             <button class="btn btn-outline btn-success btn-sm mr-2"
                                 @click="openReportFile(item.toString())">View</button>
-                            <button class="btn btn-outline btn-warning btn-sm">Print PDF</button>
+                            <button class="btn btn-outline btn-warning btn-sm"
+                                @click="openReportFile(item.toString(), 1)">Print PDF</button>
                         </th>
                     </tr>
                 </tbody>
@@ -49,8 +50,8 @@ export default {
         }
     },
     methods: {
-        openReportFile(reportNumber: string) {
-            const routeData = this.$router.resolve({ name: 'dcv_report', params: { id: this.$props.id, sample_number: reportNumber } });
+        openReportFile(reportNumber: string, isPrint: number = 0) {
+            const routeData = this.$router.resolve({ name: 'dcv_report', params: { id: this.$props.id, sample_number: reportNumber, is_print: isPrint } });
             window.open(routeData.href, '_blank');
         }
     },

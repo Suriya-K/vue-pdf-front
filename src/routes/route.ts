@@ -17,7 +17,7 @@ const router = createRouter({
       props: true,
     },
     {
-      path: "/dcv_report/:sample_number/:id",
+      path: "/dcv_report/:sample_number/:id/:is_print",
       name: "dcv_report",
       component: DcvReportVue,
       props: true,

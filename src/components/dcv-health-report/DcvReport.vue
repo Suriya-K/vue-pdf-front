@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount, onMounted, ref } from 'vue';
 import GroupHealthRisk from './GroupHealthRisk.vue';
 import HealthRiskRecommend from './HealthRiskRecommend.vue';
 import HealthRiskReport from './HealthRiskReport.vue';
@@ -19,7 +19,8 @@ import axios from 'axios';
 
 const props = defineProps({
     id: { type: String, required: true },
-    sample_number: { type: String, required: true }
+    sample_number: { type: String, required: true },
+    is_print: { type: Number, required: true }
 })
 
 // change type later
@@ -72,6 +73,18 @@ onBeforeMount(async () => {
     const groupedData = getGroupScoreGreatherThanSix(); // Get the grouped data using your existing function
     transformedArray.value = transformGroupedDataToArray(groupedData);
     calculatedRecommendPage();
+})
+
+const delay_print = () => {
+    window.print()
+    window.close()
+}
+
+onMounted(() => {
+    if (props.is_print == 1) {
+        document.title = "SAMPLE_" + props.sample_number
+        setTimeout(delay_print, 500)
+    }
 })
 
 function extractAndGroupSample(sample: any) {
@@ -187,7 +200,7 @@ function transformGroupedDataToArray(groupedData: Record<string, any[]>): any[] 
 }
 
 function calculatedRecommendPage() {
-    const chunkSize = 6;
+    const chunkSize = 5;
     const transformedArrayValue = transformedArray.value;
     // console.log("check");
     // console.log(transformedArrayValue);
