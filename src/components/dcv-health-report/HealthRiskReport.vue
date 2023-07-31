@@ -59,9 +59,9 @@
                     </div>
                     <div class="pt-[12.8rem] pl-2 font-notoSansThai text-very_small text-gray-700 whitespace-pre-line">* คำนวณโดยใช้คะแนนจากดีเอ็นเอ (polygenic risk score) ร่วมกับ<br>ปัจจัยด้านความรุนแรงของโรค </div>
                 </div>
-                <div class="grid basis-1/2 gap-4 pl-1">
+                <div class="flex flex-col gap-4 pl-1">
                     <div v-for="item in sampleDataHighestScore">
-                        <CardComponent class="bg-cover w-[20.4rem] h-64"
+                        <CardComponent class="bg-cover w-[20.4rem]"
                             :name="item.risk_disease" :score="item.disease_score" :intro="item.intro" />
                     </div>
                 </div>
