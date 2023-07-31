@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if='!close'>
         <div class="grid place-items-center">
             <table class="table">
                 <!-- head -->
@@ -32,7 +32,6 @@
 
 <script  lang="ts">
 import { ref, computed, watch } from 'vue';
-
 export default {
     props: {
         items: {
@@ -50,6 +49,7 @@ export default {
         }
     },
     setup(props) {
+        let close = false
         const currentPage = ref(1);
 
         const pageCount = computed(() =>
@@ -83,8 +83,12 @@ export default {
             pageCount,
             pages,
             displayedItems,
-            changePage
+            changePage,
+            close
         };
+    },
+    beforeUnmount() {
+        this.close = true;
     }
 }
 </script>

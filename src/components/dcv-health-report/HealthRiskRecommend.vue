@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import RecommandCardComponet from './cards/RecommandCardComponet.vue';
 const data = ref<any>([]);
 const props = defineProps({
@@ -64,10 +64,8 @@ const groupName = ref([
     },
 ])
 
-onBeforeMount(() => {
+onMounted(() => {
     data.value = props.recommandData;
-    console.log("DATA VALUE");
-    console.log(data.value);
 })
 
 function findGroupName(groupCode: any) {

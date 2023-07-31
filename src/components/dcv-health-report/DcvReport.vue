@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref } from 'vue';
+import { onBeforeMount, onBeforeUnmount, onMounted, ref } from 'vue';
 import GroupHealthRisk from './GroupHealthRisk.vue';
 import HealthRiskRecommend from './HealthRiskRecommend.vue';
 import HealthRiskReport from './HealthRiskReport.vue';
@@ -61,18 +61,36 @@ const groupName = ref([
     },
 ])
 
+const isMounted = ref(false);
+
 onBeforeMount(async () => {
+    if (isMounted.value) return;
     if (!props.sample_number) return
-    const sample = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv/healths/get/" + props.sample_number + '/' + props.id, { withCredentials: true })
-        .then(response => {
-            console.log(response.data)
-            return response.data
-        })
-    sampleData.value = extractAndGroupSample(sample);
-    groupData.value = await getSampleGroup();
-    const groupedData = getGroupScoreGreatherThanSix(); // Get the grouped data using your existing function
-    transformedArray.value = transformGroupedDataToArray(groupedData);
-    calculatedRecommendPage();
+
+    try {
+        const sample = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv/healths/get/" + props.sample_number + '/' + props.id, { withCredentials: true })
+            .then(response => {
+                console.log(response.data)
+                return response.data
+            })
+        sampleData.value = extractAndGroupSample(sample);
+        groupData.value = await getSampleGroup();
+        const groupedData = getGroupScoreGreatherThanSix(); // Get the grouped data using your existing function
+        transformedArray.value = transformGroupedDataToArray(groupedData);
+        calculatedRecommendPage();
+        isMounted.value = true;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+
+})
+
+// Clear value to prevent memory leaks
+onBeforeUnmount(() => {
+    sampleData.value = null;
+    groupData.value = null;
+    transformedArray.value = null;
+    chunks.value = null;
 })
 
 const delay_print = () => {
@@ -200,15 +218,15 @@ function transformGroupedDataToArray(groupedData: Record<string, any[]>): any[] 
 }
 
 function calculatedRecommendPage() {
-    const chunkSize = 5;
+    const chunkSize = 6;
     const transformedArrayValue = transformedArray.value;
     // console.log("check");
     // console.log(transformedArrayValue);
 
     var chuckList: any[] = [];
     const pageList: any[] = [];
-
     let counter = 0;
+    let special_flag: boolean = false;
     // const chunks: DcvHealthLists[][] = [];
     for (let i = 0; i < transformedArrayValue.length; i += 1) {
         const length = transformedArrayValue[i].data.length;
@@ -236,14 +254,24 @@ function calculatedRecommendPage() {
                 chuckList = [];
             }
         }
+        if (!special_flag) {
+            special_flag = transformedArrayValue[i].data.find((element: any) => {
+                const risk_count = findSpecialCharacter(element.risk_reduction)
+                const checkup_count = findSpecialCharacter(element.checkup)
+                if (risk_count >= 2 || checkup_count >= 2) {
+                    counter += 1
+                    return true
+                }
+            });
+        }
     }
     if (counter != 0) {
         pageList.push(chuckList)
         chuckList = [];
     }
     chunks.value = pageList;
-    console.log("chunki chunki chunky");
-    console.log(chunks.value);
+    // console.log("chunki chunki chunky");
+    // console.log(chunks.value);
 
 
 
@@ -263,6 +291,13 @@ function calculatedRecommendPage() {
     //     //     // const chunk = transformedArray[i].data[i].slice(i, i + chunkSize);
     //     //     // chunks.value.push(chunk);
     //     // }
+}
+
+function findSpecialCharacter(str: string, specialChar: string = "•"): number {
+    const regex = new RegExp(specialChar, 'g');
+    const matches = str.match(regex);
+
+    return matches ? matches.length : 0;
 }
 
 </script>

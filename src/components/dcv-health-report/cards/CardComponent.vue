@@ -73,9 +73,9 @@
 </template>
 <script setup lang="ts">
 const props = defineProps({
-    name: { type: String, required: true, default: 'มะเร็งลำไส้ <br> (Colorectal cancer)' },
-    score: { type: Number, required: true, default: 1.1 },
-    intro: { type: String, required: true, default: 'มะเร็งลำไส้ใหญ่และทวารหนักเป็นมะเร็งพบบ่อยเป็นอันดับที่3ของคนไทยอาการมีได้ตั้งแต่การขับถ่ายผิดปกติถ่ายอุจจาระเป็นมูกเลือดหรือเป็นเลือดแดงสดจนถึงซีดเบื่ออาหารและน้ำหนักลดโดยไม่ทราบสาเหตุ' },
+    name: { type: String, required: false, default: '' },
+    score: { type: Number, required: true, default: 0 },
+    intro: { type: String, required: false, default: '' },
     groupList: { type: Boolean, required: false, default: false },
     paddingBottom: { type: String, default: '0.5rem' },
     extraStretch: { type: Boolean, required: false, default: false },
