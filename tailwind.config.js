@@ -46,7 +46,7 @@ export default {
       head: ["32px", "40px"],
       small: ["24px", "40px"],
       small_long: ["12px", "16px"],
-      very_small: ["10px", "12px"],
+      very_small: ["10px", "14px"],
     },
   },
   plugins: [require("daisyui")],

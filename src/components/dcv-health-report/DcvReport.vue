@@ -117,8 +117,13 @@ function extractAndGroupSample(sample: any) {
 
 function getHighestScore() {
     if (!sampleData.value) return
-    sampleData.value.sort((a: any, b: any) => b.disease_score - a.disease_score);
-    const topThree = sampleData.value.slice(0, 3);
+    const remove_no_intro_sample = sampleData.value.filter((data: any) => {
+        if (data == undefined) return
+        if (!data.intro) return
+        return data
+    })
+    remove_no_intro_sample.sort((a: any, b: any) => b.disease_score - a.disease_score);
+    const topThree = remove_no_intro_sample.slice(0, 3);
     topThree.forEach((item: any) => {
         item.intro.replace(" ", "");
         item.risk_disease.replace(/(.+)\s(.+)/, "$1\n$2");
