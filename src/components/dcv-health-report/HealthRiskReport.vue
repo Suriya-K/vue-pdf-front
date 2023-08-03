@@ -57,7 +57,7 @@
                                 :line-no="7" />
                         </div>
                     </div>
-                    <div class="pt-[12.8rem] pl-2 font-notoSansThai text-very_small text-gray-700 whitespace-pre-line">* คำนวณโดยใช้คะแนนจากดีเอ็นเอ (polygenic risk score) ร่วมกับ<br>ปัจจัยด้านความรุนแรงของโรค </div>
+                    <div class="pt-[12.8rem] pl-2 font-notoSansThai text-very_small text-gray-700 whitespace-pre-line">* PRS (Polygenic Risk Score) คือคะแนนความเสี่ยงที่คำนวณจากยีนหลายยีน<br>และถูกรายงานเป็นความเสี่ยงเทียบกับประชากรปกติ  </div>
                 </div>
                 <div class="flex flex-col gap-4 pl-1">
                     <div v-for="item in sampleDataHighestScore">

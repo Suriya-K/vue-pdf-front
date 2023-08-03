@@ -183,7 +183,7 @@ function getGroupScoreGreatherThanSix() {
             }
 
             group.forEach((sample: any) => {
-                if (sample.disease_score > 6) {
+                if (sample.disease_score > 6.6 && sample.risk_reduction && sample.supplement) {
                     groupedData[element.group].push({
                         name: sample.risk_disease,
                         score: sample.disease_score,
