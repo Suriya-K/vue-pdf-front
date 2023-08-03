@@ -108,9 +108,9 @@ function setScoreString(score: number): string {
 function setColor(): string {
     const score = props.score
     let backgroundColor: string = '';
-    if (score >= 0 && score <= 3) return backgroundColor = 'bg-dcv-low';
-    if (score > 3 && score <= 6)  return backgroundColor = 'bg-dcv-med';
-    if (score > 6 && score <= 10) return backgroundColor = 'bg-dcv-high';
+    if (score < 6.6) return backgroundColor = 'bg-dcv-low';
+    if (score >= 6.6 && score < 9)  return backgroundColor = 'bg-dcv-med';
+    if (score >= 9) return backgroundColor = 'bg-dcv-high';
     return backgroundColor;
 }
 </script>

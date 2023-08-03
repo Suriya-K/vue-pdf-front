@@ -93,17 +93,17 @@ const lineState = {
 function setLineColor(name: any): string {
     const score = props.groupScore[name][0].score
     let state: string = '';
-    if (score >= 0 && score <= 3) return state = lineState.low
-    if (score > 3 && score <= 6) return state = lineState.med
-    if (score > 6 && score <= 10) return state = lineState.high
+    if (score < 6.6) return state = lineState.low
+    if (score >= 6.6 && score < 9) return state = lineState.med
+    if (score >= 9) return state = lineState.high
     return state;
 }
 function setSmallCardColor(name: any): string {
     const score = props.groupScore[name][0].score
     let state: string = '';
-    if (score >= 0 && score <= 3) return state = smallCardState.low
-    if (score > 3 && score <= 6) return state = smallCardState.med
-    if (score > 6 && score <= 10) return state = smallCardState.high
+    if (score < 6.6 ) return state = smallCardState.low
+    if (score >= 6.6 && score < 9) return state = smallCardState.med
+    if (score >= 9) return state = smallCardState.high
     return state;
 }
 </script>
