@@ -231,21 +231,26 @@ function calculatedRecommendPage() {
     var chuckList: any[] = [];
     const pageList: any[] = [];
     let counter = 0;
-    let special_flag: boolean = false;
     // const chunks: DcvHealthLists[][] = [];
+    console.log("all chunks", transformedArrayValue)
     for (let i = 0; i < transformedArrayValue.length; i += 1) {
+        let special_flag: boolean = false;
         const length = transformedArrayValue[i].data.length;
         let last = 0;
         let completeFlag = false
         while (!completeFlag) {
             if (counter + length - last < chunkSize) {
                 const slicedList = transformedArrayValue[i].data.slice(last, length);
-                chuckList.push({ ...transformedArrayValue[i], data: slicedList });
+                if (slicedList.length > 0) {
+                    chuckList.push({ ...transformedArrayValue[i], data: slicedList });
+                }
                 completeFlag = true
                 counter = (counter + length - last) % chunkSize
             } else if (counter + length >= chunkSize) {
                 const slicedList = transformedArrayValue[i].data.slice(0, chunkSize - counter);// = length-(counter+length-chunkSize)
-                chuckList.push({ ...transformedArrayValue[i], data: slicedList });
+                if (slicedList.length > 0) {
+                    chuckList.push({ ...transformedArrayValue[i], data: slicedList });
+                }
                 if (chunkSize - counter == length) {
                     completeFlag = true
                 }
@@ -255,6 +260,7 @@ function calculatedRecommendPage() {
             // console.log("subchunki chunki chunky");
             // console.log(chuckList);
             if (counter == 0) {
+                console.log('chunks counter 0', chuckList);
                 pageList.push(chuckList)
                 chuckList = [];
             }
@@ -271,9 +277,11 @@ function calculatedRecommendPage() {
         }
     }
     if (counter != 0) {
+        console.log('chunks counter not 0', chuckList)
         pageList.push(chuckList)
         chuckList = [];
     }
+    console.log(pageList)
     chunks.value = pageList;
     // console.log("chunki chunki chunky");
     // console.log(chunks.value);
