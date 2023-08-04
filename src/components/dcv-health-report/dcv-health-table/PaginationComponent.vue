@@ -23,10 +23,12 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]"
-                v-for="page in pages" :key="page" @click="changePage(page)">
-                {{ page }}
-            </button>
+            <div class="flex flex-row gap-4">
+                <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]"
+                    v-for="page in pages" :key="page" @click="changePage(page)">
+                    {{ page }}
+                </button>
+            </div>
         </div>
     </div>
 </template>

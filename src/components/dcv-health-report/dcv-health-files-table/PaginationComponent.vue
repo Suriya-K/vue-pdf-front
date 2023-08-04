@@ -1,6 +1,6 @@
 <template>
     <div class="container" v-if='!close'>
-        <div class="grid place-items-center">
+        <div class="grid place-items-center pb-10">
             <table class="table">
                 <!-- head -->
                 <thead>
@@ -22,10 +22,12 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]"
-                v-for="page in pages" :key="page" @click="changePage(page)">
-                {{ page }}
-            </button>
+            <div class="flex flex-row gap-4">
+                <button type="button" :class="['btn btn-primary  btn-sm mr-0.1', { isActive: page === currentPage }]"
+                    v-for="page in pages" :key="page" @click="changePage(page)">
+                    {{ page }}
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -40,7 +42,7 @@ export default {
         },
         itemsPerPage: {
             type: Number,
-            default: 10
+            default: 7
         },
     },
     methods: {

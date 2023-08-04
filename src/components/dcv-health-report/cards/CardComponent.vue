@@ -7,7 +7,7 @@
                 <!-- replace below with v-if -->
                 <div class="mx-auto max-w-md">
                     <div class="flex flex-row justify-center pt-4 pl-5 pr-2">
-                        <p class="font-notoSansThai text-gray-800 font-bold whitespace-pre-line mr-auto" >{{ name.replace(" (","\n(") }}</p>
+                        <p class="font-notoSansThai text-gray-800 font-bold whitespace-pre-line mr-auto pr-4" >{{ name.replace(" (","\n(") }}</p>
                         <!-- <p class="font-notoSansThai text-gray-800 font-bold ml-5" v-html="name"></p> -->
                         <div class="relative ">
                             <div :class="setColor()" class="flex w-full my-auto items-center justify-center py-1.5 px-5 rounded-lg">
