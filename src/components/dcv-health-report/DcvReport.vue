@@ -241,14 +241,14 @@ function calculatedRecommendPage() {
         while (!completeFlag) {
             if (counter + length - last < chunkSize) {
                 const slicedList = transformedArrayValue[i].data.slice(last, length);
-                if (slicedList.length > 0) {
+                if (slicedList.length >= 1) {
                     chuckList.push({ ...transformedArrayValue[i], data: slicedList });
                 }
                 completeFlag = true
                 counter = (counter + length - last) % chunkSize
             } else if (counter + length >= chunkSize) {
                 const slicedList = transformedArrayValue[i].data.slice(0, chunkSize - counter);// = length-(counter+length-chunkSize)
-                if (slicedList.length > 0) {
+                if (slicedList.length >= 1) {
                     chuckList.push({ ...transformedArrayValue[i], data: slicedList });
                 }
                 if (chunkSize - counter == length) {
@@ -259,7 +259,7 @@ function calculatedRecommendPage() {
             }
             // console.log("subchunki chunki chunky");
             // console.log(chuckList);
-            if (counter == 0) {
+            if (counter == 0 && chuckList.length > 0) {
                 console.log('chunks counter 0', chuckList);
                 pageList.push(chuckList)
                 chuckList = [];
@@ -276,12 +276,10 @@ function calculatedRecommendPage() {
             });
         }
     }
-    if (counter != 0) {
-        console.log('chunks counter not 0', chuckList)
+    if (counter != 0 && chuckList.length > 0) {
         pageList.push(chuckList)
         chuckList = [];
     }
-    console.log(pageList)
     chunks.value = pageList;
     // console.log("chunki chunki chunky");
     // console.log(chunks.value);

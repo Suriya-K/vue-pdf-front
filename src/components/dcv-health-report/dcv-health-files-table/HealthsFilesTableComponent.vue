@@ -1,5 +1,5 @@
 <template>
-    <PaginationComponent :items=data :items-per-page=10></PaginationComponent>
+    <PaginationComponent :items=data :items-per-page=7></PaginationComponent>
 </template>
 
 <script setup lang="ts">
@@ -11,7 +11,6 @@ let data = ref(<any>[]);
 async function getDcvLists() {
     const data: Array<any> = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv/healths/get/files/lists", { withCredentials: true })
         .then(response => {
-            console.log(response.data)
             return response.data
         })
     return data;

@@ -1,5 +1,5 @@
 <template>
-    <PaginationComponent :items=data :items-per-page=10 :id="props.id"></PaginationComponent>
+    <PaginationComponent :items=data :items-per-page=7 :id="props.id"></PaginationComponent>
 </template>
 
 <script setup lang="ts">
