@@ -16,7 +16,6 @@ import GroupHealthRisk from './GroupHealthRisk.vue';
 import HealthRiskRecommend from './HealthRiskRecommend.vue';
 import HealthRiskReport from './HealthRiskReport.vue';
 import axios from 'axios';
-import { count } from 'console';
 
 const props = defineProps({
     id: { type: String, required: true },
