@@ -16,6 +16,7 @@ import GroupHealthRisk from './GroupHealthRisk.vue';
 import HealthRiskRecommend from './HealthRiskRecommend.vue';
 import HealthRiskReport from './HealthRiskReport.vue';
 import axios from 'axios';
+import { count } from 'console';
 
 const props = defineProps({
     id: { type: String, required: true },
@@ -70,7 +71,7 @@ onBeforeMount(async () => {
     try {
         const sample = await axios.get(import.meta.env.VITE_PDF_SERVICE + "dcv/healths/get/" + props.sample_number + '/' + props.id, { withCredentials: true })
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 return response.data
             })
         sampleData.value = extractAndGroupSample(sample);
@@ -232,7 +233,7 @@ function calculatedRecommendPage() {
     const pageList: any[] = [];
     let counter = 0;
     // const chunks: DcvHealthLists[][] = [];
-    console.log("all chunks", transformedArrayValue)
+    // console.log("all chunks", transformedArrayValue)
     for (let i = 0; i < transformedArrayValue.length; i += 1) {
         let special_flag: boolean = false;
         const length = transformedArrayValue[i].data.length;
@@ -257,10 +258,11 @@ function calculatedRecommendPage() {
                 last = chunkSize - counter
                 counter = (counter + chunkSize - counter) % chunkSize
             }
+            // console.log('counter checks', counter)
             // console.log("subchunki chunki chunky");
             // console.log(chuckList);
             if (counter == 0 && chuckList.length > 0) {
-                console.log('chunks counter 0', chuckList);
+                // console.log('add to recommend', chuckList);
                 pageList.push(chuckList)
                 chuckList = [];
             }
@@ -269,14 +271,17 @@ function calculatedRecommendPage() {
             special_flag = transformedArrayValue[i].data.find((element: any) => {
                 const risk_count = findSpecialCharacter(element.risk_reduction)
                 const checkup_count = findSpecialCharacter(element.checkup)
-                if (risk_count >= 2 || checkup_count >= 2) {
-                    counter += 1
+                if ((risk_count >= 2 || checkup_count >= 2)) {
+                    if (counter < 5) {
+                        counter += 1
+                    }
                     return true
                 }
             });
         }
     }
     if (counter != 0 && chuckList.length > 0) {
+        // console.log('remain cunks', chuckList);
         pageList.push(chuckList)
         chuckList = [];
     }
